@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\UsedCar;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+/**
+ * @extends ServiceEntityRepository<UsedCar>
+ *
+ * @method UsedCar|null find($id, $lockMode = null, $lockVersion = null)
+ * @method UsedCar|null findOneBy(array $criteria, array $orderBy = null)
+ * @method UsedCar[]    findAll()
+ * @method UsedCar[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class UsedCarRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, UsedCar::class);
+    }
+
+    public function save(UsedCar $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(UsedCar $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+//    /**
+//     * @return UsedCar[] Returns an array of UsedCar objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('u')
+//            ->andWhere('u.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('u.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+//    public function findOneBySomeField($value): ?UsedCar
+//    {
+//        return $this->createQueryBuilder('u')
+//            ->andWhere('u.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
+}
