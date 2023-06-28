@@ -63,48 +63,22 @@
         </div>
     </div>
 </div>
-
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
+<section class="row">
+    <div class="col-12">
             <h2 class="text-center my-4">Témoignages de nos clients</h2>
             <h3 class="text-center my-4">Nous laisser un avis</h3>
-        </div>
-        <div class="col-4"></div>
     </div>
-</div>
-<div class="container-sm">
-    <div class="row">
-        <div class="col-4">
-            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>    
-        <div class="col-4">
-            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>    
-        <div class="col-4">
-            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>    
-    </div>        
-</div>    
+{% for testimonial in testimonial %}
+	<div class="col-3">
+		<div class="card h-70 m-3">
+			<div class="card-body text-center">
+				<h5 class="card-title">{{ testimonial.name }}</h5>
+				<p class="card-text">{{ testimonial.content }}</p>
+				<p>La note laissé est de: {{ testimonial.note }}</p>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</section>
 {% include "_partials/_footer.html.twig" %}
 {% endblock %}
