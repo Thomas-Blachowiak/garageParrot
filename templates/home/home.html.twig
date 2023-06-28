@@ -4,25 +4,107 @@
 
 {% block body %}
 
-<div class="container-fluid">
+<div class="container-sm text-center">
+    <h1 class="text-center my-4">Nos services</h1>
+</div>
+<div class="container-sm">
     <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            <h1 class="text-center my-4">Nos services</h1>
-            
+        <div class="card m-3" style="max-width: 800px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-4"></div>
     </div>
+    <div class="row justify-content-end">
+        <div class="card m-3" style="max-width: 800px;">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card m-3" style="max-width: 800px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
             <h2 class="text-center my-4">Témoignages de nos clients</h2>
-            <h2 class="text-center my-4">Nous laisser un avis</h2>
-            
+            <h3 class="text-center my-4">Nous laisser un avis</h3>
         </div>
         <div class="col-4"></div>
     </div>
 </div>
+<div class="container-sm">
+    <div class="row">
+        <div class="col-4">
+            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Secondary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>    
+        <div class="col-4">
+            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Secondary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>    
+        <div class="col-4">
+            <div class="card text-bg-secondary m-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Secondary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>    
+    </div>        
+</div>    
+{% include "_partials/_footer.html.twig" %}
 {% endblock %}
