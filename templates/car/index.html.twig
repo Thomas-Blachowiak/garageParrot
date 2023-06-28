@@ -3,48 +3,46 @@
 {% block title %}Voitures d'occasion{% endblock %}
 
 {% block body %}
-    <div class="container-sm text-center">
+<div class="container-sm text-center">
         <h1 class="text-center my-4">Nos occasions</h1>
+</div>
+<section class="container-sm">
+<div class="row">
+    <div class="col-12">
+            <h2 class="text-center my-4">Les occasions récente</h2>
     </div>
-    <div class="container-sm mb-3">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                <img src="{{ asset('/image/audi.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="{{ asset('/image/mercedes.jpeg')}}" class="card-img-top" alt="..." style="max-width: 100%; max-height: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a short card.</p>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="{{ asset('/image/porshe.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="{{ asset('/image/audi.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
+{% for usedCar in usedCar %}
+    <div class="col-4">
+        <div class="card h-70 m-3" style="width: 20rem" >
+            <img src="{{asset('/image/porshe.jpeg')}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ usedCar.name}}</h5>
+                <p class="card-text">
+                    {{ usedCar.price}}€<br>
+                    {{ usedCar.year}}<br>
+                    {{ usedCar.kilometer}}km<br>
+                    {{ usedCar.energy}}<br>
+                </p>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-controls="collapseOne">
+                                Caractéristiques
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong>
+                                {{ usedCar.caracteristics }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+{% endfor %}
+</div>
+</section>
 {% include "_partials/_footer.html.twig" %}
 {% endblock %}

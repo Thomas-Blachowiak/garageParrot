@@ -63,7 +63,8 @@
         </div>
     </div>
 </div>
-<section class="row">
+<section class="container-sm">
+<div class="row">
     <div class="col-12">
             <h2 class="text-center my-4">Témoignages de nos clients</h2>
             <h3 class="text-center my-4">Nous laisser un avis</h3>
@@ -74,11 +75,12 @@
 			<div class="card-body text-center">
 				<h5 class="card-title">{{ testimonial.name }}</h5>
 				<p class="card-text">{{ testimonial.content }}</p>
-				<p>La note laissé est de: {{ testimonial.note }}</p>
+				<p>La note laissée est de: {{ testimonial.note }}</p>
 			</div>
 		</div>
 	</div>
 {% endfor %}
+</div>
 </section>
 {% include "_partials/_footer.html.twig" %}
 {% endblock %}
