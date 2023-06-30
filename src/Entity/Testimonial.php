@@ -28,6 +28,11 @@ class Testimonial
      */
     private ?string $name = null;
 
+    
+    #[ORM\Column(type:"boolean")]
+    
+    private $approved = false;
+
     #[ORM\Column(type: Types::TEXT)]
     /**
      * Summary of content
@@ -44,6 +49,7 @@ class Testimonial
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
+
 
     /**
      * Summary of getId
@@ -126,6 +132,16 @@ class Testimonial
     {
         $this->email = $email;
 
+        return $this;
+    }
+    public function getApproved(): bool
+    {
+        return $this->approved;
+    }
+
+    public function setApproved(bool $approved): self
+    {
+        $this->approved = $approved;
         return $this;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Testimonial;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -28,6 +29,7 @@ class TestimonialCrudController extends AbstractCrudController
         yield    EmailField::new('email', 'Email');
         yield    TextareaField::new('content', 'Contenue');
         yield    IntegerField::new('note', 'Note sur 20');
+        yield    BooleanField::new('approved', 'Approved')->renderAsSwitch();
 
     }
 }

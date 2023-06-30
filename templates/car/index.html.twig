@@ -13,8 +13,8 @@
     </div>
 {% for usedCar in usedCar %}
     <div class="col-4">
-        <div class="card h-70 m-3" style="width: 20rem" >
-            <img src="{{asset('/image/porshe.jpeg')}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
+        <div class="card h-70 m-3 bg-primary" style="width: 20rem" >
+            <img src="{{asset('image/porshe.jpeg')}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ usedCar.name}}</h5>
                 <p class="card-text">
@@ -23,16 +23,15 @@
                     {{ usedCar.kilometer}}km<br>
                     {{ usedCar.energy}}<br>
                 </p>
-                <div class="accordion" id="accordionExample">
+                <div class="accordion bg-primary border-rounder" id="accordionExample{{ loop.index }}">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ loop.index }}" aria-expanded="false" aria-controls="collapseTwo{{ loop.index }}">
                                 Caractéristiques
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse" data-bs-parent="#accordionExample">
+                        <div id="collapseTwo{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ loop.index }}">
                             <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong>
                                 {{ usedCar.caracteristics }}
                             </div>
                         </div>

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau témoignage{% endblock %}
+
+{% block body %}
+<div class="container-sm">
+    <h1 class="text-center my-4">Nouveau témoignage</h1>
+
+    {{ form_start(form) }}
+
+    <div class="form-group my-3">
+        Nom:
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="form-group my-3">
+        E-mail:
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <div class="form-group my-3">
+        Votre témoignage:
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.content) }}
+    </div>
+
+    <div class="form-group my-3">
+        Votre note sur 5:
+        {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.note) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}
