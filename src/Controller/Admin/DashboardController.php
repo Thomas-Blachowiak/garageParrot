@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\UsedCar;
 use App\Entity\User;
 use App\Entity\Testimonial;
+use App\Entity\Contact;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -50,6 +51,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Témoignage', 'fas fa-comment')->setSubItems([
             MenuItem::linkToCrud('Créer un nouveau témoignage', 'fas fa-comment', Testimonial::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Testimonial::class)
+        ]);
+
+        yield MenuItem::subMenu('Demande client', 'fas fa-comment')->setSubItems([
+            MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Contact::class)
         ]);
 
         if ($this->isGranted('ROLE_ADMIN')) {
