@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Repository\ContactRepository;
+use App\Repository\AddressRepository;
+use App\Repository\OpeningDaysRepository;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +24,7 @@ class ContactController extends AbstractController
         $this->contactRepository = $contactRepository;
     }
     #[Route('/contact', name: 'app_contact')]
-    public function new(Request $request): Response
+    public function new(Request $request,AddressRepository $addressRepository, OpeningDaysRepository $openingDaysRepository): Response
     {
         $contact = new Contact();
 
@@ -39,6 +41,8 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
             'form' => $form->createView(),
+            'address' => $addressRepository->findOneBy([],[]),
+            'openingDays' => $openingDaysRepository->findBy([],[])
         ]);
     }
 

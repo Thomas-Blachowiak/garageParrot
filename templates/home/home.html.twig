@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="container-sm text-center">
-    <h1 class="text-center my-4">Nos services</h1>
+    <h1 class="text-center my-4">Présentation</h1>
     <p>
     Bienvenue chez <strong>V. PARROT</strong>, votre partenaire automobile de confiance ! Nous sommes spécialisés dans la mécanique, la carrosserie et le montage de pneus.<br><br>
     Notre équipe de professionnels expérimentés est là pour prendre soin de votre véhicule de A à Z. 
@@ -24,6 +24,7 @@
     </p>
 </div>
 <div class="container-sm">
+    <h2 class="text-center my-4">Nos services</h2>
     <div class="row justify-content-center">
     {% for services in services %}
         <div class="card m-3 bg-primary" style="max-width: 800px;">
@@ -66,5 +67,33 @@
 {% endfor %}
 </div>
 </section>
-{% include "_partials/_footer.html.twig" %}
+<footer>
+	<div class="container-sm">
+		<div class="row">
+			<div class="col-md-4 text-center my-3">
+				<h5>Horaires</h5>
+        {% for openingDays in openingDays %}
+                <p><strong>{{ openingDays.days }}:</strong>  {{ openingDays.open }}</p>
+        {% endfor %}
+			</div>
+			<div class="col-md-4 text-center my-3">
+				<h5>Vous êtes satisfait
+					<br>
+					de nos services ?</h5><br>
+				<h5>Faites-part de vos<br>
+					impressions
+				</h5><br>
+				<a class="btn btn-primary mbsy-3" href="{{ path('app_testimonial')}}" role="button">Cliquez-ici</a>
+			</div>
+			<div class="col-md-4 text-center my-3">
+				<h5>Adresse</h5>
+				<p>{{ address.street }}</p>
+				<p>{{ address.city }}</p>
+				<p>{{ address.zipCode }}</p>
+                <h5>Téléphone</5><br>
+                <p>{{ address.phoneNumber }}</p>
+			</div>
+		</div>
+	</div>
+</footer>
 {% endblock %}

@@ -7,6 +7,8 @@ use App\Entity\User;
 use App\Entity\Testimonial;
 use App\Entity\Contact;
 use App\Entity\Services;
+use App\Entity\Address;
+use App\Entity\OpeningDays;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -69,6 +71,20 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::subMenu('Services proposés', 'fas fa-user')->setSubItems([
                 MenuItem::linkToCrud('Créer un services', 'fas fa-user-friends', Services::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des services', 'fas fa-eye', Services::class)
+            ]);
+        }
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::subMenu('Adresse', 'fas fa-user')->setSubItems([
+                MenuItem::linkToCrud('Coordonnée du garage', 'fas fa-user-friends', Address::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Aperçu des coordonnées', 'fas fa-eye', Address::class)
+            ]);
+        }
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::subMenu('Jours d\'ouverture', 'fas fa-user')->setSubItems([
+                MenuItem::linkToCrud('Modifier les horaires', 'fas fa-user-friends', OpeningDays::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Aperçu des horaires', 'fas fa-eye', OpeningDays::class)
             ]);
         }
     }
