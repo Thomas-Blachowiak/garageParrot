@@ -24,70 +24,24 @@
     </p>
 </div>
 <div class="container-sm">
-    <div class="row">
+    <div class="row justify-content-center">
+    {% for services in services %}
         <div class="card m-3 bg-primary" style="max-width: 800px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
+                    <img src="{{ asset('uploads/images/' ~ services.images)}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics" style="height: 100%;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title"><strong>Mécanique</strong></h5>
-                        <p class="card-text">
-                        Bienvenue dans notre section Mécanique ! Chez V. PARROT, notre équipe expérimentée offre des services de mécanique automobile de haute qualité.
-                        Que ce soit pour une vidange d'huile, un remplacement de pneus ou des réparations plus complexes, 
-                        nous utilisons des équipements de pointe et des pièces de qualité. Nous vous garantissons un service professionnel, 
-                        honnête et transparent. Confiez votre véhicule à nos experts et profitez d'une conduite en toute tranquillité. 
-                        Prenez rendez-vous dès aujourd'hui pour un entretien régulier et des réparations fiables. Votre satisfaction est notre priorité.
+                        <h5 class="card-title"><strong>{{ services.name }}</strong></h5>
+                        <p class="card-text" style="text-align: justify;">
+                            {{ services.content }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row justify-content-end">
-        <div class="card m-3 bg-primary" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Carosserie</strong></h5>
-                        <p class="card-text">
-                        Nos spécialistes en carrosserie utilisent des techniques de pointe pour réparer et restaurer l'apparence de votre véhicule. 
-                        Que ce soit pour des dommages légers ou majeurs, nous sommes là pour vous offrir un service de qualité et redonner à votre voiture son éclat d'origine. 
-                        Nous évaluons les dommages, vous fournissons un devis détaillé et travaillons avec soin pour vous satisfaire. 
-                        Faites confiance à notre expertise en carrosserie pour retrouver une voiture impeccable. 
-                        Prenez rendez-vous dès aujourd'hui et offrez une nouvelle jeunesse à votre véhicule. 
-                        Votre satisfaction est notre priorité absolue.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card m-3 bg-primary" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ asset('/image/mecanics.jpeg')}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Montage de pneus</strong></h5>
-                        <p class="card-text">
-                        Nous assurons le montage professionnel de pneus pour tous types de véhicules. Notre équipe expérimentée offre un service rapide et fiable. 
-                        Que ce soit pour un changement saisonnier, un remplacement usuel ou une amélioration de performance, nous sommes là pour vous aider. 
-                        Nous utilisons des équipements de pointe et suivons les procédures recommandées par les fabricants pour un montage précis et sécurisé. 
-                        Nos experts en pneumatiques sont disponibles pour vous conseiller sur le choix des pneus adaptés à votre véhicule et votre style de conduite. 
-                        Avec une large sélection de marques renommées, nous avons des options pour tous les budgets. Chez V. PARROT, votre satisfaction est notre priorité. 
-                        Prenez rendez-vous dès maintenant pour un montage de pneus efficace et conduisez en toute sécurité.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    {% endfor %}
     </div>
 </div>
 <section class="container-sm">

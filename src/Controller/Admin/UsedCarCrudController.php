@@ -31,10 +31,9 @@ class UsedCarCrudController extends AbstractCrudController
         yield    IntegerField::new('kilometer', 'Nombre de km');
         yield    TextField::new('energy', 'Energie');
         yield    TextareaField::new('caracteristics', 'Caractéristiques');
-            
         yield    ImageField::new('image')
-                ->setBasePath('public/uploads/')
-                ->setUploadDir('/public/uploads/')
-                ->setSortable(false);
+                    ->setBasePath('public/uploads/images')
+                    ->setUploadDir('/public/uploads/images')
+                    ->setSortable(false);
     }
 }

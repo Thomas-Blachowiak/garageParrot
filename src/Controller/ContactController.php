@@ -33,7 +33,7 @@ class ContactController extends AbstractController
             $this->entityManager->persist($contact);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('app_testimonial_success');
+            return $this->redirectToRoute('app_contact_success');
         }
 
         return $this->render('contact/index.html.twig', [

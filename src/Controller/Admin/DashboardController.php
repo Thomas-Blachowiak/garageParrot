@@ -6,6 +6,7 @@ use App\Entity\UsedCar;
 use App\Entity\User;
 use App\Entity\Testimonial;
 use App\Entity\Contact;
+use App\Entity\Services;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -61,6 +62,13 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::subMenu('Utilisateur', 'fas fa-user')->setSubItems([
                 MenuItem::linkToCrud('Créer un utilisateur', 'fas fa-user-friends', User::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des utilisateurs', 'fas fa-eye', User::class)
+            ]);
+        }
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::subMenu('Services proposés', 'fas fa-user')->setSubItems([
+                MenuItem::linkToCrud('Créer un services', 'fas fa-user-friends', Services::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Aperçu des services', 'fas fa-eye', Services::class)
             ]);
         }
     }

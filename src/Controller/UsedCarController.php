@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CarController extends AbstractController
+class UsedCarController extends AbstractController
 {
     #[Route('/car', name: 'app_car')]
     public function index (UsedCarRepository $usedCarRepository): Response

@@ -14,7 +14,7 @@
 {% for usedCar in usedCar %}
     <div class="col-4">
         <div class="card h-70 m-3 bg-primary" style="width: 20rem" >
-            <img src="{{asset('image/porshe.jpeg')}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
+            <img src="{{asset('uploads/images/' ~ usedCar.image)}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ usedCar.name}}</h5>
                 <p class="card-text">
