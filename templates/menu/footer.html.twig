@@ -3,6 +3,9 @@
 		<div class="row">
 			<div class="col-md-4 text-center my-3">
 				<h5>Horaires</h5>
+        {% for openingDays in openingDays %}
+                <p><strong>{{ openingDays.days }}:</strong>  {{ openingDays.open }}</p>
+        {% endfor %}
 			</div>
 			<div class="col-md-4 text-center my-3">
 				<h5>Vous êtes satisfait
@@ -18,7 +21,14 @@
 				<p>{{ address.street }}</p>
 				<p>{{ address.city }}</p>
 				<p>{{ address.zipCode }}</p>
+                <h5>Téléphone</5><br><br>
+                <p>
+					<a href="tel:{{ address.phoneNumber }}">
+						{{ address.phoneNumber }}
+					</a>
+				</p>
 			</div>
 		</div>
 	</div>
+    
 </footer>

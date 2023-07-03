@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Testimonial;
 use App\Form\TestimonialFormType;
+use App\Repository\AddressRepository;
+use App\Repository\OpeningDaysRepository;
 use App\Repository\TestimonialRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +24,7 @@ class TestimonialController extends AbstractController
         $this->testimonialRepository = $testimonialRepository;
     }
     #[Route('/testimonial', name: 'app_testimonial', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, AddressRepository $addressRepository, OpeningDaysRepository $openingDaysRepository): Response
     {
         $testimonial = new Testimonial();
         $testimonial->setApproved(false);
@@ -39,6 +41,8 @@ class TestimonialController extends AbstractController
 
         return $this->render('testimonial/new.html.twig', [
             'form' => $form->createView(),
+            'address' => $addressRepository->findOneBy([],[]),
+            'openingDays' => $openingDaysRepository->findBy([],[])
         ]);
     }
     #[Route('/testimonial/success', name: 'app_testimonial_success', methods: ['GET'])]

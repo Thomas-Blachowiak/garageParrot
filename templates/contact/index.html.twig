@@ -42,33 +42,5 @@
 
     {{ form_end(form) }}
 </div>
-<footer>
-	<div class="container-sm">
-		<div class="row">
-			<div class="col-md-4 text-center my-3">
-				<h5>Horaires</h5>
-        {% for openingDays in openingDays %}
-                <p><strong>{{ openingDays.days }}:</strong>  {{ openingDays.open }}</p>
-        {% endfor %}
-			</div>
-			<div class="col-md-4 text-center my-3">
-				<h5>Vous êtes satisfait
-					<br>
-					de nos services ?</h5><br>
-				<h5>Faites-part de vos<br>
-					impressions
-				</h5><br>
-				<a class="btn btn-primary mbsy-3" href="{{ path('app_testimonial')}}" role="button">Cliquez-ici</a>
-			</div>
-			<div class="col-md-4 text-center my-3">
-				<h5>Adresse</h5>
-				<p>{{ address.street }}</p>
-				<p>{{ address.city }}</p>
-				<p>{{ address.zipCode }}</p>
-                <h5>Téléphone</5><br>
-                <p>{{ address.phoneNumber }}</p>
-			</div>
-		</div>
-	</div>
-</footer>
+{% include 'menu/footer.html.twig' %}
 {% endblock %}
