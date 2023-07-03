@@ -52,12 +52,11 @@ class DashboardController extends AbstractDashboardController
         ]);
 
         yield MenuItem::subMenu('Témoignage', 'fas fa-comment')->setSubItems([
-            MenuItem::linkToCrud('Créer un nouveau témoignage', 'fas fa-comment', Testimonial::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Testimonial::class)
         ]);
 
         yield MenuItem::subMenu('Demande client', 'fas fa-comment')->setSubItems([
-            MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Contact::class)
+            MenuItem::linkToCrud('Aperçue des demandes', 'fas fa-eye', Contact::class)
         ]);
 
         if ($this->isGranted('ROLE_ADMIN')) {

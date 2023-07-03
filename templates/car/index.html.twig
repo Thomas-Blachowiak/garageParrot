@@ -13,7 +13,7 @@
 			</div>
 			<div class="form-group col-4">
 				<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
-				<input type="number" id="kilometer-filter" class="form-control" placeholder="Min Kilomètres">
+				<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
 			</div>
 			<div class="form-group col-4">
 				<label for="price-min-filter">Filtrer par prix (min) :</label>
@@ -21,37 +21,93 @@
 			</div>
 			<div class="form-group col-4">
 				<label for="year-filter">Filtrer par année (max) :</label>
-                <input type="number" id="year-min-filter" class="form-control" placeholder="Max Year">
+                <input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
 			</div>
 			<div class="form-group col-4">
 				<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
-				<input type="number" id="kilometer-filter" class="form-control" placeholder="Max Kilomètres">
+				<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
 			</div>
 			<div class="form-group col-4">
 				<label for="price-min-filter">Filtrer par prix (max) :</label>
-				<input type="number" id="price-min-filter" class="form-control" placeholder="Max Prix">
+				<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
 			</div>
 		</div>
 		<div class="row">
 			<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
 		</div>
+		<div class="row">
+			<!-- Ajoute un bouton de réinitialisation -->
+			<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
+		</div>
 	</form>
 </div>
+
+
+<script>
+let filterForm = document.getElementById('filter-form');
+filterForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
+
+    let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
+    let yearMaxFilter = parseInt(document.getElementById('year-max-filter').value);
+    let kilometerMinFilter = parseInt(document.getElementById('kilometer-min-filter').value);
+    let kilometerMaxFilter = parseInt(document.getElementById('kilometer-max-filter').value);
+    let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
+    let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
+
+    let usedCars = document.getElementsByClassName('col-4');
+    for (let i = 0; i < usedCars.length; i++) {
+        let usedCar = usedCars[i];
+        let year = parseInt(usedCar.getAttribute('data-year'));
+        let kilometer = parseInt(usedCar.getAttribute('data-kilometer'));
+        let price = parseInt(usedCar.getAttribute('data-price'));
+
+        // Comparez les valeurs avec les critères de filtrage
+        if (year < yearMinFilter || year > yearMaxFilter ||
+            kilometer < kilometerMinFilter || kilometer > kilometerMaxFilter ||
+            price < priceMinFilter || price > priceMaxFilter) {
+            usedCar.style.display = 'none'; // Masquez les véhicules qui ne correspondent pas aux critères
+        } else {
+            usedCar.style.display = 'block'; // Affichez les véhicules qui correspondent aux critères
+        }
+    }
+});
+	// Sélectionne le bouton de réinitialisation par son ID
+	let resetButton = document.getElementById('reset-button');
+
+	// Ajoute un gestionnaire d'événements pour le clic sur le bouton de réinitialisation
+	resetButton.addEventListener('click', function() {
+	// Réinitialise les valeurs des éléments de filtre à leur état initial
+	document.getElementById('year-min-filter').value = '';
+	document.getElementById('year-max-filter').value = '';
+	document.getElementById('kilometer-min-filter').value = '';
+	document.getElementById('kilometer-max-filter').value = '';
+	document.getElementById('price-min-filter').value = '';
+	document.getElementById('price-max-filter').value = '';
+
+	// Affiche tous les véhicules en supprimant les styles de display
+	let usedCars = document.getElementsByClassName('col-4');
+	for (let i = 0; i < usedCars.length; i++) {
+		usedCars[i].style.display = 'block';
+	}
+	});
+
+</script>
 
 <section class="container-sm">
 <div class="row">
 {% for usedCar in usedCar %}
-    <div class="col-4">
+    <div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
         <div class="card h-70 m-3 bg-primary" style="width: 20rem" >
             <img src="{{asset('uploads/images/' ~ usedCar.image)}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ usedCar.name}}</h5>
-                <p class="card-text">
-                    {{ usedCar.price}}€<br>
-                    {{ usedCar.year}}<br>
-                    {{ usedCar.kilometer}}km<br>
-                    {{ usedCar.energy}}<br>
-                </p>
+                <div class="card-text">
+                    <p id="price">{{ usedCar.price}}€</p>
+                    <p id="annee">{{ usedCar.year}}</p>
+                    <p id="km">{{ usedCar.kilometer}}km</p>
+                    <p id="energy">{{ usedCar.energy}}</p>
+                </div>
                 <div class="accordion bg-primary border-rounder" id="accordionExample{{ loop.index }}">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
