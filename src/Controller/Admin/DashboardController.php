@@ -39,7 +39,9 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('GarageParrot');
+            ->setTitle('<img src="./image/logo.jpeg"></span>')
+            ->renderContentMaximized()
+            ->setLocales(['fr']);
     }
 
     public function configureMenuItems(): iterable

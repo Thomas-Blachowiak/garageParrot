@@ -7,6 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -29,11 +31,24 @@ class UsedCarCrudController extends AbstractCrudController
         yield    IntegerField::new('price', 'Prix');
         yield    IntegerField::new('year', 'Première immatriculation');
         yield    IntegerField::new('kilometer', 'Nombre de km');
-        yield    TextField::new('energy', 'Energie');
+        yield    ChoiceField::new('energy', 'Energie')
+                    ->setChoices([
+                        'Essence' => 'Essence',
+                        'Diesel' => 'Diesel',
+                        'Hybrid' => 'Hybrid',
+                        'Electrique' => 'Electrique'
+                    ]);
         yield    TextareaField::new('caracteristics', 'Caractéristiques');
         yield    ImageField::new('image')
-                    ->setBasePath('public/uploads/images')
-                    ->setUploadDir('/public/uploads/images')
-                    ->setSortable(false);
+                    ->setBasePath('uploads/images')
+                    ->setUploadDir('public/uploads/images')
+                    ->setSortable(true);
     }
+
+    /*public function configureCrud(Crud $crud): Crud
+    {
+        return $d
+            ->setEntityLabelInSingular('Véhicule d\'occasion')
+            ->setEntityLabelInPlural('Véhicules d\'occasion');
+    }*/
 }

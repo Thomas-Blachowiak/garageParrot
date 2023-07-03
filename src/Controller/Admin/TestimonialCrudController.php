@@ -31,4 +31,9 @@ class TestimonialCrudController extends AbstractCrudController
         yield    IntegerField::new('note', 'Note sur 20');
         yield    BooleanField::new('approved', 'Approved')->renderAsSwitch();
     }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Témoignages');
+    }
 }

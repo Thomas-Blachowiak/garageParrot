@@ -33,7 +33,8 @@ class UsedCar
     private ?string $energy = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    
+    private ?string $image;
 
     public function getId(): ?int
     {

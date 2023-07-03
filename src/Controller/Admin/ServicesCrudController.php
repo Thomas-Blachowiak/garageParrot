@@ -27,8 +27,8 @@ class ServicesCrudController extends AbstractCrudController
         yield    TextField::new('name', 'Nom');
         yield    TextareaField::new('content', 'Contenue');
         yield    ImageField::new('images')
-        ->setBasePath('public/uploads/images')
-        ->setUploadDir('/public/uploads/images')
+        ->setBasePath('uploads/images')
+        ->setUploadDir('public/uploads/images')
         ->setSortable(false);
 
     }
