@@ -39,10 +39,16 @@ class UsedCarCrudController extends AbstractCrudController
                         'Electrique' => 'Electrique'
                     ]);
         yield    TextareaField::new('caracteristics', 'Caractéristiques');
-        yield    ImageField::new('image')
+        /*yield    ImageField::new('image')
                     ->setBasePath('uploads/images')
                     ->setUploadDir('public/uploads/images')
-                    ->setSortable(true);
+                    ->setSortable(true);*/
+                    yield CollectionField::new('images')
+                    ->setEntryType(ImageField::class)
+                    ->setLabel('Images')
+                    ->setSortable(true)
+                    ->allowAdd() // Autoriser l'ajout d'éléments à la collection
+                    ->allowDelete(); // Autoriser la suppression d'éléments de la collection
     }
 
     /*public function configureCrud(Crud $crud): Crud

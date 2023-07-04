@@ -16,9 +16,9 @@
         <div class="container-sm">
             <h1 class="h3 m-4 font-weight-normal text-center">Veuillez renseigner les champs</h1>
             <label for="inputEmail" class="m-2">Email:</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control m-2" autocomplete="email" required autofocus>
+                <input type="email"  name="email" id="inputEmail" class="form-control m-2" autocomplete="email" required autofocus>
             <label for="inputPassword" class="m-2">Mot de passe:</label>
-            <input type="password" name="password" id="inputPassword" class="form-control m-2" autocomplete="current-password" required>
+                <input type="password" name="password" id="inputPassword" class="form-control m-2" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" class="m-2">
             <button class="btn btn-lg btn-primary m-2" type="submit">
