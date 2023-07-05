@@ -8,38 +8,38 @@
 			<h1 class="text-center my-4">Nos occasions</h1>
 			<form id="filter-form">
 				<div class="row">
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="year-filter">Filtrer par année (min) :</label>
 						<input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
 					</div>
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
 						<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
 					</div>
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="price-min-filter">Filtrer par prix (min) :</label>
 						<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
 					</div>
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="year-filter">Filtrer par année (max) :</label>
 						<input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
 					</div>
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
 						<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
 					</div>
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-sm-6">
 						<label for="price-min-filter">Filtrer par prix (max) :</label>
 						<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
 					</div>
 				</div>
 				<div class="row">
-					<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
+					<button type="submit" class="btn btn-success col-4 my-2 mx-auto">Filtrer</button>
 				</div>
 				<div
 					class="row">
 					<!-- Ajoute un bouton de réinitialisation -->
-					<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
+					<button id="reset-button" class="btn btn-success col-4 my-2 mx-auto">Réinitialiser</button>
 				</div>
 			</form>
 		</div>
@@ -47,8 +47,8 @@
 	<section class="container-sm">
 		<div class="row">
 			{% for usedCar in usedCar %}
-				<div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
-					<div class="card h-70 m-3 bg-primary" style="width: 20rem">
+				<div class="col-md-4 col-sm-6" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
+					<div class="card m-3 bg-secondary" style="width: 23rem">
 						{% if usedCar.getImages()|length > 1 %}
 							<div
 								id="carCarousel{{ loop.index }}" class="carousel slide">
@@ -78,12 +78,12 @@
 						<div class="card-body">
 							<h5 class="card-title">{{ usedCar.name}}</h5>
 							<div class="card-text">
-								<p id="price">{{ usedCar.price}}€</p>
-								<p id="annee">{{ usedCar.year}}</p>
-								<p id="km">{{ usedCar.kilometer}}km</p>
-								<p id="energy">{{ usedCar.energy}}</p>
+								<p id="price" class="my-1">Prix: {{ usedCar.price}}€</p>
+								<p id="annee" class="my-1">Première immatriculation: {{ usedCar.year}}</p>
+								<p id="km" class="my-1">Nombre de km: {{ usedCar.kilometer}}km</p>
+								<p id="energy" class="my-1">Moteur: {{ usedCar.energy}}</p>
 							</div>
-							<div class="accordion bg-primary border-rounder" id="accordionExample{{ loop.index }}">
+							<div class="accordion bg-secondary border-rounder" id="accordionExample{{ loop.index }}">
 								<div class="accordion-item">
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ loop.index }}" aria-expanded="false" aria-controls="collapseTwo{{ loop.index }}">

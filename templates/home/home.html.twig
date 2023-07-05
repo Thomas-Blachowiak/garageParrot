@@ -45,26 +45,29 @@
     </div>
 </div>
 <section class="container-sm">
-<div class="row">
-    <div class="col-12">
+    <div class="row">
+        <div class="col-12">
             <h3 class="text-center my-4">Témoignages de nos clients</h3>
-            <h4 class="text-center my-4">Nous laisser un avis</h4>
+        </div>
+        <div class="row">
+            <a class="btn btn-success col-4 my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
+                Je laisse un témoignages
+            </a>
+        </div>
+    {% for testimonial in testimonial %}
+        {% if testimonial.approved %}
+        <div class="col-3">
+            <div class="card h-70 m-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ testimonial.name }}</h5>
+                    <p class="card-text">{{ testimonial.content }}</p>
+                    <p>La note laissée est de: {{ testimonial.note }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
     </div>
-    
-{% for testimonial in testimonial %}
-    {% if testimonial.approved %}
-	<div class="col-3">
-		<div class="card h-70 m-3">
-			<div class="card-body text-center">
-				<h5 class="card-title">{{ testimonial.name }}</h5>
-				<p class="card-text">{{ testimonial.content }}</p>
-				<p>La note laissée est de: {{ testimonial.note }}</p>
-			</div>
-		</div>
-	</div>
-    {% endif %}
-{% endfor %}
-</div>
 </section>
 {% include 'menu/footer.html.twig' %}
 {% endblock %}

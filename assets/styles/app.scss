@@ -1,9 +1,12 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 
+body {
+    font-family: 'Rajdhani', sans-serif;
+}
 
 nav {
-    background-color: #D92332;
+    background-color: $primary;
     height: 100px;
 }
 
@@ -13,7 +16,7 @@ img {
 }
 
 footer {
-    background-color: #D92332;
+    background-color: $primary;
     bottom: 0;
     width:100%;
 }
@@ -22,4 +25,8 @@ footer {
     position: relative;
     width: 300px;
     height: 200px;
+}
+
+h5 {
+    text-decoration: underline;
 }
