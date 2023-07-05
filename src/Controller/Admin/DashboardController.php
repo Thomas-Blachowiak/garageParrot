@@ -9,6 +9,7 @@ use App\Entity\Contact;
 use App\Entity\Services;
 use App\Entity\Address;
 use App\Entity\OpeningDays;
+use App\Entity\Image;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Créer une nouvelle annonce', 'fas fa-car', UsedCar::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Aperçue des annonces', 'fas fa-eye', UsedCar::class)
         ]);
+        yield  MenuItem::linkToCrud('Image', 'fas fa-eye', Image::class);
 
         yield MenuItem::subMenu('Témoignage', 'fas fa-comment')->setSubItems([
             MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Testimonial::class)

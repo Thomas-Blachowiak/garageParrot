@@ -45,7 +45,7 @@
 
 <script>
 let filterForm = document.getElementById('filter-form');
-filterForm.addEventListener('submit', function(event) {
+    filterForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
 
     let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
@@ -93,6 +93,8 @@ filterForm.addEventListener('submit', function(event) {
 	});
 
 </script>
+
+
 <script>
     document.getElementById('contact-link').addEventListener('click', function(event) {
         event.preventDefault(); // Empêche le comportement par défaut du lien
@@ -117,7 +119,7 @@ filterForm.addEventListener('submit', function(event) {
 {% for usedCar in usedCar %}
     <div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
         <div class="card h-70 m-3 bg-primary" style="width: 20rem" >
-            <img src="{{asset('uploads/images/' ~ usedCar.image)}}" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
+            <img src="#" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ usedCar.name}}</h5>
                 <div class="card-text">

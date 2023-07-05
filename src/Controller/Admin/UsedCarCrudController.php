@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\UsedCar;
+use App\Form\Type\UsedCarImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -13,6 +14,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use App\Form\Type\VichFileType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\VichImageField;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UsedCarCrudController extends AbstractCrudController
 {
@@ -39,17 +43,12 @@ class UsedCarCrudController extends AbstractCrudController
                         'Electrique' => 'Electrique'
                     ]);
         yield    TextareaField::new('caracteristics', 'Caractéristiques');
-        /*yield    ImageField::new('image')
-                    ->setBasePath('uploads/images')
-                    ->setUploadDir('public/uploads/images')
-                    ->setSortable(true);*/
-                    yield CollectionField::new('images')
-                    ->setEntryType(ImageField::class)
-                    ->setLabel('Images')
-                    ->setSortable(true)
-                    ->allowAdd() // Autoriser l'ajout d'éléments à la collection
-                    ->allowDelete(); // Autoriser la suppression d'éléments de la collection
+        
+        yield   CollectionField::new('images')
+                ->setEntryType(UsedCarImageType::class);
+        
     }
+}
 
     /*public function configureCrud(Crud $crud): Crud
     {
@@ -57,4 +56,3 @@ class UsedCarCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('Véhicule d\'occasion')
             ->setEntityLabelInPlural('Véhicules d\'occasion');
     }*/
-}

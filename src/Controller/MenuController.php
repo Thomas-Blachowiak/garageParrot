@@ -13,9 +13,9 @@ class MenuController extends AbstractController
     #[Route('/menu', name: 'app_menu')]
     public function footer (AddressRepository $addressRepository, OpeningDaysRepository $openingDaysRepository)
     {
-        return $this->render('menu/footer.html.twig',[
+        /*return $this->render('menu/footer.html.twig',[
             'address' => $addressRepository->findOneBy([],[]),
             'openingDays' => $openingDaysRepository->findBy([],[])
-        ]);
+        ]);*/
     }
 }
