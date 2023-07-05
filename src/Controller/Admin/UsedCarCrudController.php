@@ -33,7 +33,7 @@ class UsedCarCrudController extends AbstractCrudController
     {
         yield    TextField::new('name', 'Nom du véhicule');
         yield    IntegerField::new('price', 'Prix');
-        yield    IntegerField::new('year', 'Première immatriculation');
+        yield    IntegerField::new('year', 'Année');
         yield    IntegerField::new('kilometer', 'Nombre de km');
         yield    ChoiceField::new('energy', 'Energie')
                     ->setChoices([

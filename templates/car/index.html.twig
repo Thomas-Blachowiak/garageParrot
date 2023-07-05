@@ -1,161 +1,183 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voitures d'occasion{% endblock %}
+{% block title %}Voitures d'occasion
+{% endblock %}
 
 {% block body %}
-<div class="container-sm text-center">
-	<h1 class="text-center my-4">Nos occasions</h1>
-	<form id="filter-form">
-		<div class="row">
-			<div class="form-group col-4">
-				<label for="year-filter">Filtrer par année (min) :</label>
-                <input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
+	<div class="container-sm text-center">
+		<h1 class="text-center my-4">Nos occasions</h1>
+		<form id="filter-form">
+			<div class="row">
+				<div class="form-group col-4">
+					<label for="year-filter">Filtrer par année (min) :</label>
+					<input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
+				</div>
+				<div class="form-group col-4">
+					<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
+					<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
+				</div>
+				<div class="form-group col-4">
+					<label for="price-min-filter">Filtrer par prix (min) :</label>
+					<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
+				</div>
+				<div class="form-group col-4">
+					<label for="year-filter">Filtrer par année (max) :</label>
+					<input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
+				</div>
+				<div class="form-group col-4">
+					<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
+					<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
+				</div>
+				<div class="form-group col-4">
+					<label for="price-min-filter">Filtrer par prix (max) :</label>
+					<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
+				</div>
 			</div>
-			<div class="form-group col-4">
-				<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
-				<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
+			<div class="row">
+				<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
 			</div>
-			<div class="form-group col-4">
-				<label for="price-min-filter">Filtrer par prix (min) :</label>
-				<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
+			<div
+				class="row">
+				<!-- Ajoute un bouton de réinitialisation -->
+				<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
 			</div>
-			<div class="form-group col-4">
-				<label for="year-filter">Filtrer par année (max) :</label>
-                <input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
-			</div>
-			<div class="form-group col-4">
-				<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
-				<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
-			</div>
-			<div class="form-group col-4">
-				<label for="price-min-filter">Filtrer par prix (max) :</label>
-				<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
-			</div>
-		</div>
-		<div class="row">
-			<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
-		</div>
-		<div class="row">
-			<!-- Ajoute un bouton de réinitialisation -->
-			<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
-		</div>
-	</form>
-</div>
+		</form>
+	</div>
 
 
-<script>
-let filterForm = document.getElementById('filter-form');
-    filterForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
+	<script>
+		let filterForm = document.getElementById('filter-form');
+filterForm.addEventListener('submit', function (event) {
+event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
 
-    let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
-    let yearMaxFilter = parseInt(document.getElementById('year-max-filter').value);
-    let kilometerMinFilter = parseInt(document.getElementById('kilometer-min-filter').value);
-    let kilometerMaxFilter = parseInt(document.getElementById('kilometer-max-filter').value);
-    let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
-    let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
+let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
+let yearMaxFilter = parseInt(document.getElementById('year-max-filter').value);
+let kilometerMinFilter = parseInt(document.getElementById('kilometer-min-filter').value);
+let kilometerMaxFilter = parseInt(document.getElementById('kilometer-max-filter').value);
+let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
+let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
 
-    let usedCars = document.getElementsByClassName('col-4');
-    for (let i = 0; i < usedCars.length; i++) {
-        let usedCar = usedCars[i];
-        let year = parseInt(usedCar.getAttribute('data-year'));
-        let kilometer = parseInt(usedCar.getAttribute('data-kilometer'));
-        let price = parseInt(usedCar.getAttribute('data-price'));
+let usedCars = document.getElementsByClassName('col-4');
+for (let i = 0; i < usedCars.length; i++) {
+let usedCar = usedCars[i];
+let year = parseInt(usedCar.getAttribute('data-year'));
+let kilometer = parseInt(usedCar.getAttribute('data-kilometer'));
+let price = parseInt(usedCar.getAttribute('data-price'));
 
-        // Comparez les valeurs avec les critères de filtrage
-        if (year < yearMinFilter || year > yearMaxFilter ||
-            kilometer < kilometerMinFilter || kilometer > kilometerMaxFilter ||
-            price < priceMinFilter || price > priceMaxFilter) {
-            usedCar.style.display = 'none'; // Masquez les véhicules qui ne correspondent pas aux critères
-        } else {
-            usedCar.style.display = 'block'; // Affichez les véhicules qui correspondent aux critères
-        }
-    }
+// Comparez les valeurs avec les critères de filtrage
+if (year < yearMinFilter || year > yearMaxFilter || kilometer < kilometerMinFilter || kilometer > kilometerMaxFilter || price < priceMinFilter || price > priceMaxFilter) {
+usedCar.style.display = 'none'; // Masquez les véhicules qui ne correspondent pas aux critères
+} else {
+usedCar.style.display = 'block'; // Affichez les véhicules qui correspondent aux critères
+}
+}
 });
-	// Sélectionne le bouton de réinitialisation par son ID
-	let resetButton = document.getElementById('reset-button');
+// Sélectionne le bouton de réinitialisation par son ID
+let resetButton = document.getElementById('reset-button');
 
-	// Ajoute un gestionnaire d'événements pour le clic sur le bouton de réinitialisation
-	resetButton.addEventListener('click', function() {
-	// Réinitialise les valeurs des éléments de filtre à leur état initial
-	document.getElementById('year-min-filter').value = '';
-	document.getElementById('year-max-filter').value = '';
-	document.getElementById('kilometer-min-filter').value = '';
-	document.getElementById('kilometer-max-filter').value = '';
-	document.getElementById('price-min-filter').value = '';
-	document.getElementById('price-max-filter').value = '';
+// Ajoute un gestionnaire d'événements pour le clic sur le bouton de réinitialisation
+resetButton.addEventListener('click', function () { // Réinitialise les valeurs des éléments de filtre à leur état initial
+document.getElementById('year-min-filter').value = '';
+document.getElementById('year-max-filter').value = '';
+document.getElementById('kilometer-min-filter').value = '';
+document.getElementById('kilometer-max-filter').value = '';
+document.getElementById('price-min-filter').value = '';
+document.getElementById('price-max-filter').value = '';
 
-	// Affiche tous les véhicules en supprimant les styles de display
-	let usedCars = document.getElementsByClassName('col-4');
-	for (let i = 0; i < usedCars.length; i++) {
-		usedCars[i].style.display = 'block';
-	}
-	});
-
-</script>
+// Affiche tous les véhicules en supprimant les styles de display
+let usedCars = document.getElementsByClassName('col-4');
+for (let i = 0; i < usedCars.length; i++) {
+usedCars[i].style.display = 'block';
+}
+});
+	</script>
 
 
-<script>
-    document.getElementById('contact-link').addEventListener('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
+	<script>
+		document.getElementById('contact-link').addEventListener('click', function (event) {
+event.preventDefault();
+// Empêche le comportement par défaut du lien
 
-        // Récupérer les informations du véhicule
-        
-        let year = parseInt(usedCar.getAttribute('data-year'));
-        // ... ajoutez d'autres informations du véhicule ici
+// Récupérer les informations du véhicule
 
-        // Pré-remplir les champs du formulaire avec les informations du véhicule
-       // document.getElementById('car-name-input').value = carName;
-        document.getElementById('car-year-input').value = carYear;
-        // ... affectez d'autres valeurs aux champs du formulaire ici
+let year = parseInt(usedCar.getAttribute('data-year'));
+// ... ajoutez d'autres informations du véhicule ici
 
-        // Faire défiler jusqu'au formulaire
-        document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
-    });
-</script>
+// Pré-remplir les champs du formulaire avec les informations du véhicule
+// document.getElementById('car-name-input').value = carName;
+document.getElementById('car-year-input').value = carYear;
+// ... affectez d'autres valeurs aux champs du formulaire ici
 
-<section class="container-sm">
-<div class="row">
-{% for usedCar in usedCar %}
-    <div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
-        <div class="card h-70 m-3 bg-primary" style="width: 20rem" >
-            <img src="#" class="card-img-top" style="width: 20rem; height: 15rem" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ usedCar.name}}</h5>
-                <div class="card-text">
-                    <p id="price">{{ usedCar.price}}€</p>
-                    <p id="annee">{{ usedCar.year}}</p>
-                    <p id="km">{{ usedCar.kilometer}}km</p>
-                    <p id="energy">{{ usedCar.energy}}</p>
-                </div>
-                <div class="accordion bg-primary border-rounder" id="accordionExample{{ loop.index }}">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ loop.index }}" aria-expanded="false" aria-controls="collapseTwo{{ loop.index }}">
-                                Caractéristiques
-                            </button>
-                        </h2>
-                        <div id="collapseTwo{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ loop.index }}">
-                            <div class="accordion-body">
-                                {{ usedCar.caracteristics }}
-                            </div>
-                        </div>
-                    </div>
-						<div>
-							<a id="contact-link" class="btn btn-secondary mbsy-3" href="{{ path('app_contact')}}" role="button">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
-  									<path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
-  									<path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
-								</svg>
-							
-							</a>
+// Faire défiler jusqu'au formulaire
+document.getElementById('form-section').scrollIntoView({behavior: 'smooth'});
+});
+	</script>
+
+	<section class="container-sm">
+		<div class="row">
+			{% for usedCar in usedCar %}
+				<div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
+					<div class="card h-70 m-3 bg-primary" style="width: 20rem">
+						{% if usedCar.getImages()|length > 1 %}
+							<div id="carCarousel{{ loop.index }}" class="carousel slide">
+								<!-- Slides -->
+								<div class="carousel-inner">
+									{% for image in usedCar.getImages() %}
+										<div class="carousel-item {% if loop.first %}active{% endif %}">
+											<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="d-block w-100 h-auto" alt="Car Image">
+										</div>
+									{% endfor %}
+								</div>
+								<!-- Contrôles -->
+								<a class="carousel-control-prev" href="#carCarousel{{ loop.index }}" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only"></span>
+								</a>
+								<a class="carousel-control-next" href="#carCarousel{{ loop.index }}" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only"></span>
+								</a>
+							</div>
+						{% else %}
+							{% for image in usedCar.getImages() %}
+								<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="card-img-top" style="width: 20rem; height: 15rem" alt="Car Image">
+							{% endfor %}
+						{% endif %}
+						<div class="card-body">
+							<h5 class="card-title">{{ usedCar.name}}</h5>
+							<div class="card-text">
+								<p id="price">{{ usedCar.price}}€</p>
+								<p id="annee">{{ usedCar.year}}</p>
+								<p id="km">{{ usedCar.kilometer}}km</p>
+								<p id="energy">{{ usedCar.energy}}</p>
+							</div>
+							<div class="accordion bg-primary border-rounder" id="accordionExample{{ loop.index }}">
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ loop.index }}" aria-expanded="false" aria-controls="collapseTwo{{ loop.index }}">
+											Caractéristiques
+										</button>
+									</h2>
+									<div id="collapseTwo{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ loop.index }}">
+										<div class="accordion-body">
+											{{ usedCar.caracteristics }}
+										</div>
+									</div>
+								</div>
+								<div>
+									<a id="contact-link" class="btn btn-secondary mbsy-3" href="{{ path('app_contact')}}" role="button">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at" viewbox="0 0 16 16">
+											<path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+											<path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+										</svg>
+									</a>
+								</div>
+							</div>
 						</div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endfor %}
-</div>
-</section>
-{% include 'menu/footer.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{% include 'menu/footer.html.twig' %}
 {% endblock %}
