@@ -2,129 +2,61 @@
 
 {% block title %}Voitures d'occasion
 {% endblock %}
-
 {% block body %}
-	<div class="container-sm text-center">
-		<h1 class="text-center my-4">Nos occasions</h1>
-		<form id="filter-form">
-			<div class="row">
-				<div class="form-group col-4">
-					<label for="year-filter">Filtrer par année (min) :</label>
-					<input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
+	<section>
+		<div class="container-sm text-center">
+			<h1 class="text-center my-4">Nos occasions</h1>
+			<form id="filter-form">
+				<div class="row">
+					<div class="form-group col-4">
+						<label for="year-filter">Filtrer par année (min) :</label>
+						<input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
+					</div>
+					<div class="form-group col-4">
+						<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
+						<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
+					</div>
+					<div class="form-group col-4">
+						<label for="price-min-filter">Filtrer par prix (min) :</label>
+						<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
+					</div>
+					<div class="form-group col-4">
+						<label for="year-filter">Filtrer par année (max) :</label>
+						<input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
+					</div>
+					<div class="form-group col-4">
+						<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
+						<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
+					</div>
+					<div class="form-group col-4">
+						<label for="price-min-filter">Filtrer par prix (max) :</label>
+						<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
+					</div>
 				</div>
-				<div class="form-group col-4">
-					<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
-					<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
+				<div class="row">
+					<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
 				</div>
-				<div class="form-group col-4">
-					<label for="price-min-filter">Filtrer par prix (min) :</label>
-					<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
+				<div
+					class="row">
+					<!-- Ajoute un bouton de réinitialisation -->
+					<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
 				</div>
-				<div class="form-group col-4">
-					<label for="year-filter">Filtrer par année (max) :</label>
-					<input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
-				</div>
-				<div class="form-group col-4">
-					<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
-					<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
-				</div>
-				<div class="form-group col-4">
-					<label for="price-min-filter">Filtrer par prix (max) :</label>
-					<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
-				</div>
-			</div>
-			<div class="row">
-				<button type="submit" class="btn btn-primary col-4 my-3 mx-auto">Filtrer</button>
-			</div>
-			<div
-				class="row">
-				<!-- Ajoute un bouton de réinitialisation -->
-				<button id="reset-button" class="btn btn-secondary col-4 my-3 mx-auto">Réinitialiser</button>
-			</div>
-		</form>
-	</div>
-
-
-	<script>
-		let filterForm = document.getElementById('filter-form');
-filterForm.addEventListener('submit', function (event) {
-event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
-
-let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
-let yearMaxFilter = parseInt(document.getElementById('year-max-filter').value);
-let kilometerMinFilter = parseInt(document.getElementById('kilometer-min-filter').value);
-let kilometerMaxFilter = parseInt(document.getElementById('kilometer-max-filter').value);
-let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
-let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
-
-let usedCars = document.getElementsByClassName('col-4');
-for (let i = 0; i < usedCars.length; i++) {
-let usedCar = usedCars[i];
-let year = parseInt(usedCar.getAttribute('data-year'));
-let kilometer = parseInt(usedCar.getAttribute('data-kilometer'));
-let price = parseInt(usedCar.getAttribute('data-price'));
-
-// Comparez les valeurs avec les critères de filtrage
-if (year < yearMinFilter || year > yearMaxFilter || kilometer < kilometerMinFilter || kilometer > kilometerMaxFilter || price < priceMinFilter || price > priceMaxFilter) {
-usedCar.style.display = 'none'; // Masquez les véhicules qui ne correspondent pas aux critères
-} else {
-usedCar.style.display = 'block'; // Affichez les véhicules qui correspondent aux critères
-}
-}
-});
-// Sélectionne le bouton de réinitialisation par son ID
-let resetButton = document.getElementById('reset-button');
-
-// Ajoute un gestionnaire d'événements pour le clic sur le bouton de réinitialisation
-resetButton.addEventListener('click', function () { // Réinitialise les valeurs des éléments de filtre à leur état initial
-document.getElementById('year-min-filter').value = '';
-document.getElementById('year-max-filter').value = '';
-document.getElementById('kilometer-min-filter').value = '';
-document.getElementById('kilometer-max-filter').value = '';
-document.getElementById('price-min-filter').value = '';
-document.getElementById('price-max-filter').value = '';
-
-// Affiche tous les véhicules en supprimant les styles de display
-let usedCars = document.getElementsByClassName('col-4');
-for (let i = 0; i < usedCars.length; i++) {
-usedCars[i].style.display = 'block';
-}
-});
-	</script>
-
-
-	<script>
-		document.getElementById('contact-link').addEventListener('click', function (event) {
-event.preventDefault();
-// Empêche le comportement par défaut du lien
-
-// Récupérer les informations du véhicule
-
-let year = parseInt(usedCar.getAttribute('data-year'));
-// ... ajoutez d'autres informations du véhicule ici
-
-// Pré-remplir les champs du formulaire avec les informations du véhicule
-// document.getElementById('car-name-input').value = carName;
-document.getElementById('car-year-input').value = carYear;
-// ... affectez d'autres valeurs aux champs du formulaire ici
-
-// Faire défiler jusqu'au formulaire
-document.getElementById('form-section').scrollIntoView({behavior: 'smooth'});
-});
-	</script>
-
+			</form>
+		</div>
+	</section>
 	<section class="container-sm">
 		<div class="row">
 			{% for usedCar in usedCar %}
 				<div class="col-4" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
 					<div class="card h-70 m-3 bg-primary" style="width: 20rem">
 						{% if usedCar.getImages()|length > 1 %}
-							<div id="carCarousel{{ loop.index }}" class="carousel slide">
+							<div
+								id="carCarousel{{ loop.index }}" class="carousel slide">
 								<!-- Slides -->
 								<div class="carousel-inner">
 									{% for image in usedCar.getImages() %}
 										<div class="carousel-item {% if loop.first %}active{% endif %}">
-											<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto"  alt="Car Image">
+											<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
 										</div>
 									{% endfor %}
 								</div>
@@ -179,5 +111,6 @@ document.getElementById('form-section').scrollIntoView({behavior: 'smooth'});
 			{% endfor %}
 		</div>
 	</section>
+	<script src="{{ asset('assets/JS/filter.js') }} " defer></script>
 	{% include 'menu/footer.html.twig' %}
 {% endblock %}

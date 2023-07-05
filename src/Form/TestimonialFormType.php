@@ -13,7 +13,6 @@ class TestimonialFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('email')
             ->add('content')
             ->add('note')
         ;

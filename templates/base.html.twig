@@ -6,20 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('assets/styles/app.scss') }}">
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    
+        
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
     </head>
     <body>
-    {% include "menu/nav.html.twig" %}
-
+        {% include "menu/nav.html.twig" %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-
-        <script src="{{ asset('assets/app.js') }}"></script>
-        <script src="{{ asset('assets/bootstrap.min.js') }}"></script>
-        <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     </body> 
 </html>

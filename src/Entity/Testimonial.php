@@ -46,11 +46,7 @@ class Testimonial
      * @var 
      */
     private ?int $note = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
-
-
+    
     /**
      * Summary of getId
      * @return int|null
@@ -119,18 +115,6 @@ class Testimonial
     public function setNote(int $note): static
     {
         $this->note = $note;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
 
         return $this;
     }
