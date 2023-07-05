@@ -17,6 +17,7 @@ class UsedCarController extends AbstractController
                         AddressRepository $addressRepository, 
                         OpeningDaysRepository $openingDaysRepository,): Response
     {
+        
         return $this->render('car/index.html.twig',[
         'usedCar' => $usedCarRepository->findBy([],[]),
         'address' => $addressRepository->findOneBy([],[]),

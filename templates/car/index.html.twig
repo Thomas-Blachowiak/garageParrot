@@ -124,7 +124,7 @@ document.getElementById('form-section').scrollIntoView({behavior: 'smooth'});
 								<div class="carousel-inner">
 									{% for image in usedCar.getImages() %}
 										<div class="carousel-item {% if loop.first %}active{% endif %}">
-											<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="d-block w-100 h-auto" alt="Car Image">
+											<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto"  alt="Car Image">
 										</div>
 									{% endfor %}
 								</div>
@@ -140,7 +140,7 @@ document.getElementById('form-section').scrollIntoView({behavior: 'smooth'});
 							</div>
 						{% else %}
 							{% for image in usedCar.getImages() %}
-								<img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="card-img-top" style="width: 20rem; height: 15rem" alt="Car Image">
+								<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
 							{% endfor %}
 						{% endif %}
 						<div class="card-body">
