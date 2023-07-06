@@ -22,7 +22,14 @@ class OpeningDaysCrudController extends AbstractCrudController
     }
     public function configureFields(string $pageName): iterable
     {
-        yield    TextField::new('days', 'Nom du jour');
+        yield    TextField::new('days', 'Jour');
         yield    TextField::new('open', 'Horaire d\'ouverture');
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('un jour d\'ouverture')
+            ->setPageTitle('index', 'Jours d\'ouverture')
+            ->setPaginatorPageSize(7);
     }
 }

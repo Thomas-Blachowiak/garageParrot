@@ -30,6 +30,12 @@ class ServicesCrudController extends AbstractCrudController
         ->setBasePath('uploads/images')
         ->setUploadDir('public/uploads/images')
         ->setSortable(false);
-
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('un service')
+            ->setPageTitle('index', 'Services proposés')
+            ->setPaginatorPageSize(5);
     }
 }

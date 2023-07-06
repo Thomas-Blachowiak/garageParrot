@@ -32,4 +32,10 @@ class ContactCrudController extends AbstractCrudController
         yield    TextareaField::new('content', 'Contenue de la demande');
         yield    BooleanField::new('approved', 'Traité')->renderAsSwitch();
     }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Demandes clients')
+            ->setPaginatorPageSize(5);
+    }
 }

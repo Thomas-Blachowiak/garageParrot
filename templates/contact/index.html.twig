@@ -8,7 +8,6 @@
     <h1 class="text-center my-4">Votre demande</h1>
 
     {{ form_start(form) }}
-
     <div class="form-group my-3">
         Prénom:
         {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
@@ -32,17 +31,40 @@
         {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.phoneNumber) }}
     </div>
-
-    <div class="form-group my-3">
-        Votre demande:
-        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.content) }}
+    
+    <div class="form-group my-3" id="formContent">
+    Votre demande:
+    {{ form_widget(form.content, {'attr': {'class': 'form-control'}, 'value': 'Annonce - Année: ' ~ form.vars.attr['data-year'] ~ ', Kilométrage: ' ~ form.vars.attr['data-kilometer'] ~ ', Prix: ' ~ form.vars.attr['data-price']}) }}
+    {{ form_errors(form.content) }}
     </div>
 
-    <button type="submit" class="btn btn-primary my-3">Envoyer</button>
-
+    <button type="submit" class="btn btn-success my-3">Envoyer</button>
+    </div>
     {{ form_end(form) }}
-</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var contactLink = document.getElementById('contact-link');
+    var formContent = document.getElementById('formContent');
+
+    contactLink.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (contactLink.dataset.clicked === 'true') {
+            var year = contactLink.getAttribute('data-year');
+            var kilometer = contactLink.getAttribute('data-kilometer');
+            var price = contactLink.getAttribute('data-price');
+
+            formContent.value = 'Prix: ' + price + ', Année: ' + year + ', Kilométrage: ' + kilometer;
+        }
+    });
+
+    contactLink.addEventListener('mousedown', function() {
+        contactLink.dataset.clicked = 'true';
+    });
+});
+</script>
 
 	{% include 'menu/footer.html.twig' %}
 {% endblock %}

@@ -27,4 +27,11 @@ class AddressCrudController extends AbstractCrudController
         yield    TextField::new('zipCode', 'Code postale');
         yield    TextField::new('phoneNumber', 'Numéro de téléphone');
     }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('une adresse')
+            ->setPageTitle('index', 'Adresse du garage')
+            ->setPaginatorPageSize(5);
+    }
 }

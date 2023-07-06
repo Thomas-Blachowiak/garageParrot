@@ -48,11 +48,12 @@ class UsedCarCrudController extends AbstractCrudController
                 ->setEntryType(UsedCarImageType::class);
         
     }
-}
-
-    /*public function configureCrud(Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
-        return $d
-            ->setEntityLabelInSingular('Véhicule d\'occasion')
-            ->setEntityLabelInPlural('Véhicules d\'occasion');
-    }*/
+        return $crud
+        ->setEntityLabelInSingular('un nouveau véhicule d\'occasion')
+        ->setPageTitle('index', 'Voitures d\'occasion')
+        ->setPaginatorPageSize(5);
+    }
+
+}

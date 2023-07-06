@@ -28,7 +28,15 @@ class ContactController extends AbstractController
     {
         $contact = new Contact();
 
-        $form = $this->createForm(ContactType::class, $contact);
+        //$form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactType::class, $contact, [
+            'attr' => [
+                'data-year' => $request->query->get('year'),
+                'data-kilometer' => $request->query->get('kilometer'),
+                'data-price' => $request->query->get('price'),
+            ],
+        ]);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

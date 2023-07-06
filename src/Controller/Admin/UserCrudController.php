@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
@@ -69,5 +70,12 @@ class UserCrudController extends AbstractCrudController
         $user->setRoles($roles); // Enregistre les rôles dans l'entité User
 
         parent::persistEntity($entityManager, $user);
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('un utilisateur')
+            ->setPageTitle('index', 'Utilisateurs')
+            ->setPaginatorPageSize(5);
     }
 }

@@ -9,7 +9,7 @@ filterForm.addEventListener('submit', function (event) {
     let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
     let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
 
-    let usedCars = document.getElementsByClassName('col-4');
+    let usedCars = document.getElementsByClassName('col-md-auto');
     for (let i = 0; i < usedCars.length; i++) {
         let usedCar = usedCars[i];
         let year = parseInt(usedCar.getAttribute('data-year'));
@@ -37,8 +37,8 @@ resetButton.addEventListener('click', function () { // Réinitialise les valeurs
     document.getElementById('price-max-filter').value = '';
 
     // Affiche tous les véhicules en supprimant les styles de display
-    let usedCars = document.getElementsByClassName('col-4');
+    /*let usedCars = document.getElementsByClassName('col-4');
     for (let i = 0; i < usedCars.length; i++) {
         usedCars[i].style.display = 'block';
-    }
+    }*/
 });

@@ -41,52 +41,49 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('<img src="./image/logo.jpeg"></span>')
-            ->renderContentMaximized()
-            ->setLocales(['fr']);
+            ->renderContentMaximized();
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
+        yield MenuItem::linkToUrl('Accueil', 'fa fa-home', '/');
 
         yield MenuItem::subMenu('Annonce', 'fas fa-car')->setSubItems([
             MenuItem::linkToCrud('Créer une nouvelle annonce', 'fas fa-car', UsedCar::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Aperçue des annonces', 'fas fa-eye', UsedCar::class)
         ]);
-        yield  MenuItem::linkToCrud('Image', 'fas fa-eye', Image::class);
+        yield  MenuItem::linkToCrud('Image', 'fas fa-images', Image::class);
 
-        yield MenuItem::subMenu('Témoignage', 'fas fa-comment')->setSubItems([
-            MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Testimonial::class)
-        ]);
 
-        yield MenuItem::subMenu('Demande client', 'fas fa-comment')->setSubItems([
-            MenuItem::linkToCrud('Aperçue des demandes', 'fas fa-eye', Contact::class)
-        ]);
+        yield  MenuItem::linkToCrud('Aperçue des témoignage', 'fas fa-eye', Testimonial::class);
+
+        yield  MenuItem::linkToCrud('Demandes client', 'fas fa-comments', Contact::class);
+
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            yield MenuItem::subMenu('Utilisateur', 'fas fa-user')->setSubItems([
-                MenuItem::linkToCrud('Créer un utilisateur', 'fas fa-user-friends', User::class)->setAction(Crud::PAGE_NEW),
+            yield MenuItem::subMenu('Utilisateur', 'fas fa-users')->setSubItems([
+                MenuItem::linkToCrud('Créer un utilisateur', 'fas fa-user', User::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des utilisateurs', 'fas fa-eye', User::class)
             ]);
         }
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            yield MenuItem::subMenu('Services proposés', 'fas fa-user')->setSubItems([
-                MenuItem::linkToCrud('Créer un services', 'fas fa-user-friends', Services::class)->setAction(Crud::PAGE_NEW),
+            yield MenuItem::subMenu('Services proposés', 'fas fa-bell-concierge')->setSubItems([
+                MenuItem::linkToCrud('Créer un services', 'fas fa-bell-concierge', Services::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des services', 'fas fa-eye', Services::class)
             ]);
         }
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            yield MenuItem::subMenu('Adresse', 'fas fa-user')->setSubItems([
-                MenuItem::linkToCrud('Coordonnée du garage', 'fas fa-user-friends', Address::class)->setAction(Crud::PAGE_NEW),
+            yield MenuItem::subMenu('Adresse', 'fas fa-location-dot')->setSubItems([
+                MenuItem::linkToCrud('Coordonnée du garage', 'fas fa-location-dot', Address::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des coordonnées', 'fas fa-eye', Address::class)
             ]);
         }
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            yield MenuItem::subMenu('Jours d\'ouverture', 'fas fa-user')->setSubItems([
-                MenuItem::linkToCrud('Modifier les horaires', 'fas fa-user-friends', OpeningDays::class)->setAction(Crud::PAGE_NEW),
+            yield MenuItem::subMenu('Jours d\'ouverture', 'fas fa-door-open')->setSubItems([
+                MenuItem::linkToCrud('Modifier les horaires', 'fas fa-door-open', OpeningDays::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Aperçu des horaires', 'fas fa-eye', OpeningDays::class)
             ]);
         }

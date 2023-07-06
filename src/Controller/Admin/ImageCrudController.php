@@ -22,8 +22,14 @@ class ImageCrudController extends AbstractCrudController
     }
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('imageName');
-        yield IntegerField::new('size');
+        yield TextField::new('imageName', 'Nom des images');
+        yield IntegerField::new('size', 'Taille');
     }
-    
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Images')
+            ->setPageTitle('index', 'Images')
+            ->setPaginatorPageSize(10);
+    }
 }
