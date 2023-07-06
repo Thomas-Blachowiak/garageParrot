@@ -7,7 +7,7 @@
 
 	<section>
 		<div class="container-sm text-center">
-			<h1 class="text-center my-4">Nos occasions</h1>
+			<h1 class="text-center my-4">Nos véhicules d'occasions</h1>
 			<div class="row justify-content-around justify-items-center">
 				<form id="filter-form">
 					<button class="btn btn-success col-4 my-2 mx-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -133,36 +133,35 @@
 			{% endfor %}
 		</div>
 	</div>
-
-
+	</section>
 
 <script>
+  {% for usedCar in usedCar %}
+    {% verbatim %}
+    var car{{ loop.index }} = {
+      year: {{ usedCar.year }},
+      kilometer: {{ usedCar.kilometer }},
+      price: {{ usedCar.price }},
+      name: "{{ usedCar.name|raw }}",
+      energy: "{{ usedCar.energy|raw }}",
+      characteristics: "{{ usedCar.caracteristics|raw }}"
+    };
+    {% endverbatim %}
+  {% endfor %}
 
-document.addEventListener('DOMContentLoaded', function() {
-    var contactLink = document.getElementById('contact-link');
-    var formContent = document.getElementById('formContent');
-
-    contactLink.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        if (contactLink.dataset.clicked === 'true') {
-            var year = contactLink.getAttribute('data-year');
-            var kilometer = contactLink.getAttribute('data-kilometer');
-            var price = contactLink.getAttribute('data-price');
-
-            formContent.value = 'Prix: ' + price + ', Année: ' + year + ', Kilométrage: ' + kilometer;
-        }
-    });
-
-    contactLink.addEventListener('mousedown', function() {
-        contactLink.dataset.clicked = 'true';
-    });
-});
+console.log(car1.year);
+console.log(car1.kilometer);
+console.log(car1.price);
 </script>
 
 
 
-	</section>
+
+
+
+
+
+	<script src="{{ asset('assets/JS/contact.js') }} " defer></script>
 	<script src="{{ asset('assets/JS/filter.js') }} " defer></script>
 	{% include 'menu/footer.html.twig' %}
 {% endblock %}

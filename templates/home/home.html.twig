@@ -31,7 +31,9 @@
         <h2 class="text-center my-4 border-bottom">Nos services</h2>
             {% for services in services %}
                 <div class="card m-3 bg-primary" style="max-width: 600px;">
+                <div class="d-flex justify-content-center">
                     <img src="{{ asset('uploads/images/' ~ services.images)}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics" style="height: 100%;">
+                </div>
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ services.name }}</strong></h5>
                             <p class="card-text" style="text-align: justify;">
@@ -41,12 +43,12 @@
                 </div>
             {% endfor %}
             </div>
-            <div class="col-xl-3">
-                <div class="row">
+            <div class="col-xl-3 d-flex justify-content-center">
+                <div class="row align-items-start ">
                     <h3 class="text-center my-4">Témoignages de nos clients</h3>
                     {% for testimonial in testimonial %}
                     {% if testimonial.approved %}
-                    <div class="col"> 
+                    <div class="col text-center"> 
                         <div class="card m-3">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ testimonial.name }}</h5>
@@ -56,7 +58,7 @@
                     </div>
                         {% endif %}
                         {% endfor %}
-                    <div class="col">
+                    <div class="col text-center ">
                         <a class="btn btn-success my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
                             Je laisse un témoignages
                         </a>
