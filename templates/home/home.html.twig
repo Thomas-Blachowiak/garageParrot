@@ -3,71 +3,70 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div class="container-sm text-center">
-    <h1 class="text-center my-4">Présentation</h1>
-    <p>
-    Bienvenue chez <strong>V. PARROT</strong>, votre partenaire automobile de confiance ! Nous sommes spécialisés dans la mécanique, la carrosserie et le montage de pneus.<br><br>
-    Notre équipe de professionnels expérimentés est là pour prendre soin de votre véhicule de A à Z. 
-    Que vous ayez besoin d'une réparation mécanique, d'une remise en état de carrosserie ou d'un changement de pneus, 
-    nous sommes équipés des outils et des compétences nécessaires pour vous offrir un service de qualité supérieure.<br><br>
-    En matière de mécanique, nous prenons en charge tous types de réparations et d'entretien, qu'il s'agisse de vidange d'huile, 
-    de réparation de freins, de diagnostic électronique ou de tout autre besoin mécanique. 
-    Votre sécurité et la performance de votre véhicule sont notre priorité.<br><br>
-    Notre équipe de carrossiers qualifiés est là pour redonner à votre voiture son apparence d'origine. 
-    Que ce soit pour réparer des dommages suite à une collision, pour éliminer des rayures ou pour une rénovation complète de la carrosserie, nous mettons tout en œuvre pour rendre votre véhicule impeccable.<br><br>
-    Enfin, pour tous vos besoins en pneumatiques, nous vous proposons un service de montage professionnel. 
-    Nous vous conseillons sur le choix des pneus adaptés à votre véhicule et à votre style de conduite, puis nous assurons un montage précis et sécurisé pour vous permettre de rouler en toute confiance.<br><br>
-    Chez <strong>V. PARROT</strong>, nous sommes fiers de fournir un service de qualité, une expertise technique et une approche personnalisée. 
-    Faites-nous confiance pour prendre soin de votre voiture avec le plus grand soin. 
-    Prenez rendez-vous dès maintenant et découvrez pourquoi nos clients nous font confiance depuis des années.
-    </p>
-</div>
-<div class="container-sm">
-    <h2 class="text-center my-4">Nos services</h2>
-    <div class="row justify-content-center">
-    {% for services in services %}
-        <div class="card m-3 bg-primary" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-4">
+<section>
+    <div class="container-sm text-center">
+        <h1 class="text-center my-4">Présentation</h1>
+        <p>
+        Bienvenue chez <strong>V. PARROT</strong>, votre partenaire automobile de confiance ! Nous sommes spécialisés dans la mécanique, la carrosserie et le montage de pneus.<br><br>
+        Notre équipe de professionnels expérimentés est là pour prendre soin de votre véhicule de A à Z. 
+        Que vous ayez besoin d'une réparation mécanique, d'une remise en état de carrosserie ou d'un changement de pneus, 
+        nous sommes équipés des outils et des compétences nécessaires pour vous offrir un service de qualité supérieure.<br><br>
+        En matière de mécanique, nous prenons en charge tous types de réparations et d'entretien, qu'il s'agisse de vidange d'huile, 
+        de réparation de freins, de diagnostic électronique ou de tout autre besoin mécanique. 
+        Votre sécurité et la performance de votre véhicule sont notre priorité.<br><br>
+        Notre équipe de carrossiers qualifiés est là pour redonner à votre voiture son apparence d'origine. 
+        Que ce soit pour réparer des dommages suite à une collision, pour éliminer des rayures ou pour une rénovation complète de la carrosserie, nous mettons tout en œuvre pour rendre votre véhicule impeccable.<br><br>
+        Enfin, pour tous vos besoins en pneumatiques, nous vous proposons un service de montage professionnel. 
+        Nous vous conseillons sur le choix des pneus adaptés à votre véhicule et à votre style de conduite, puis nous assurons un montage précis et sécurisé pour vous permettre de rouler en toute confiance.<br><br>
+        Chez <strong>V. PARROT</strong>, nous sommes fiers de fournir un service de qualité, une expertise technique et une approche personnalisée. 
+        Faites-nous confiance pour prendre soin de votre voiture avec le plus grand soin. 
+        Prenez rendez-vous dès maintenant et découvrez pourquoi nos clients nous font confiance depuis des années.
+        </p>
+    </div>
+</section>
+<section>
+    <div class="container-sm">
+        <div class="row g-4 justify-content-center">
+            <div class="col-xl-8">
+        <h2 class="text-center my-4 border-bottom">Nos services</h2>
+            {% for services in services %}
+                <div class="card m-3 bg-primary" style="max-width: 600px;">
                     <img src="{{ asset('uploads/images/' ~ services.images)}}" class="img-fluid rounded-start" alt="mecanics-image" id="mecanics" style="height: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{ services.name }}</strong></h5>
+                            <p class="card-text" style="text-align: justify;">
+                                {{ services.content }}
+                            </p>
+                        </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>{{ services.name }}</strong></h5>
-                        <p class="card-text" style="text-align: justify;">
-                            {{ services.content }}
-                        </p>
+            {% endfor %}
+            </div>
+            <div class="col-xl-3">
+                <div class="row">
+                    <h3 class="text-center my-4">Témoignages de nos clients</h3>
+                    {% for testimonial in testimonial %}
+                    {% if testimonial.approved %}
+                    <div class="col"> 
+                        <div class="card m-3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ testimonial.name }}</h5>
+                            <p class="card-text">{{ testimonial.content }}</p>
+                            <p>La note laissée est de: {{ testimonial.note }}</p>
+                        </div>
+                    </div>
+                        {% endif %}
+                        {% endfor %}
+                    <div class="col">
+                        <a class="btn btn-success my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
+                            Je laisse un témoignages
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    {% endfor %}
-    </div>
-</div>
-<section class="container-sm">
-    <div class="row">
-        <div class="col-12">
-            <h3 class="text-center my-4">Témoignages de nos clients</h3>
-        </div>
-                <div class="row">
-            <a class="btn btn-success col-4 my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
-                Je laisse un témoignages
-            </a>
-        </div>
-            
-            
-
-    </div>
-    </div>
+    </div>    
 </section>
 
-
-
-<script>
-    $(document).ready(function() {
-        $('.carousel').carousel();
-    });
-</script>
 
 
 {% include 'menu/footer.html.twig' %}

@@ -32,7 +32,7 @@ class TestimonialCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Témoignage')
+            ->setEntityLabelInSingular('un témoignage')
             ->setPageTitle('index', 'Témoignages')
             ->setPaginatorPageSize(5);
     }
