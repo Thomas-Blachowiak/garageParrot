@@ -42,7 +42,11 @@ class UsedCarCrudController extends AbstractCrudController
                         'Hybrid' => 'Hybrid',
                         'Electrique' => 'Electrique'
                     ]);
-        yield    TextareaField::new('caracteristics', 'Caractéristiques');
+
+        $caracteristics = '** Pour faire un retour à la ligne " ; " et pour mettre en gras, mettez des "{ accolade }" ';
+
+        yield    TextareaField::new('caracteristics', 'Caractéristiques')
+                    ->setHelp("<strong><u>$caracteristics</u></strong>");
         
         yield   CollectionField::new('images')
                 ->setEntryType(UsedCarImageType::class);

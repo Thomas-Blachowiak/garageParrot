@@ -99,19 +99,36 @@
 								<p id="km" class="my-1">Nombre de km: {{ usedCar.kilometer}}km</p>
 								<p id="energy" class="my-1">Moteur: {{ usedCar.energy}}</p>
 							</div>
-							<div class="accordion bg-secondary border-rounder" id="accordionExample{{ loop.index }}">
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ loop.index }}" aria-expanded="false" aria-controls="collapseTwo{{ loop.index }}">
-											Caractéristiques
-										</button>
-									</h2>
-									<div id="collapseTwo{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ loop.index }}">
-										<div class="accordion-body">
-											{{ usedCar.caracteristics }}
+									<!-- Button trigger modal -->
+									<button type="button" class="btn btn-success col-4 my-1 mx-center" data-bs-toggle="modal" data-bs-target="#exampleModal{{ loop.index }}">
+										Détails
+									</button>
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel{{ loop.index }}">{{ usedCar.name}}</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												{% if usedCar.caracteristics is defined and usedCar.caracteristics|length > 0 %}
+													{% set hasSemicolon = ';' in usedCar.caracteristics %}
+													{% set formattedCaracteristics = usedCar.caracteristics|replace({';': '<br>', '{': '<strong>', '}': '</strong>'}) %}
+													
+													{% if hasSemicolon %}
+														<p class="caracteristics">{{ formattedCaracteristics|raw }}</p>
+													{% else %}
+														<p class="caracteristics">{{ formattedCaracteristics|raw }}</p>
+													{% endif %}
+												{% endif %}
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+											</div>
+											</div>
 										</div>
 									</div>
-								</div>
 								<div>
 									<a id="contact-link" class="btn btn-secondary mbsy-3" href="{{ path('app_contact') }}" role="button"
 										data-name={{ usedCar.name }}
@@ -126,7 +143,7 @@
 										</svg>
 									</a>
 								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
