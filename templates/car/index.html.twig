@@ -64,50 +64,50 @@
 	</section>
 
 	<section>
-	<div class="container">
-		<div class="row justify-content-center">
-			{% for usedCar in usedCar %}
-				<div class="col-auto col-md-auto" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
-					<div class="card m-1 bg-secondary" style="width: 20rem">
-						{% if usedCar.getImages()|length > 1 %}
-							<div id="carCarousel{{ loop.index }}" class="carousel">
-								<div class="carousel-inner">
-									{% for image in usedCar.getImages() %}
-										<div class="carousel-item {% if loop.first %}active{% endif %}">
-											<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
-										</div>
-									{% endfor %}
+		<div class="container">
+			<div class="row justify-content-center">
+				{% for usedCar in usedCar %}
+					<div class="col-auto col-md-auto" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
+						<div class="card m-1 bg-secondary" style="width: 20rem">
+							{% if usedCar.getImages()|length > 1 %}
+								<div id="carCarousel{{ loop.index }}" class="carousel">
+									<div class="carousel-inner">
+										{% for image in usedCar.getImages() %}
+											<div class="carousel-item {% if loop.first %} active{% endif %}">
+												<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
+											</div>
+										{% endfor %}
+									</div>
+									<a class="carousel-control-prev" href="#carCarousel{{ loop.index }}" role="button" data-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="sr-only"></span>
+									</a>
+									<a class="carousel-control-next" href="#carCarousel{{ loop.index }}" role="button" data-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="sr-only"></span>
+									</a>
 								</div>
-								<a class="carousel-control-prev" href="#carCarousel{{ loop.index }}" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only"></span>
-								</a>
-								<a class="carousel-control-next" href="#carCarousel{{ loop.index }}" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only"></span>
-								</a>
-							</div>
-						{% else %}
-							{% for image in usedCar.getImages() %}
-								<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
-							{% endfor %}
-						{% endif %}
-						<div class="card-body">
-							<h5 class="card-title">{{ usedCar.name}}</h5>
-							<div class="card-text">
-								<p id="price">Prix: {{ usedCar.price}}€</p>
-								<p id="annee">Première immatriculation: {{ usedCar.year}}</p>
-								<p id="km">Nombre de km: {{ usedCar.kilometer}}km</p>
-								<p id="energy">Moteur: {{ usedCar.energy}}</p>
-							</div>
-									<!-- Button trigger modal -->
-									<button type="button" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{ loop.index }}">
-										Détails
-									</button>
-									<!-- Modal -->
-									<div class="modal fade" id="exampleModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-											<div class="modal-content">
+							{% else %}
+								{% for image in usedCar.getImages() %}
+									<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb') }}" class="d-block w-100 h-auto" alt="Car Image">
+								{% endfor %}
+							{% endif %}
+							<div class="card-body">
+								<h5 class="card-title" id="nameCar">{{ usedCar.name}}</h5>
+								<div class="card-text">
+									<p id="price">Prix: {{ usedCar.price}}€</p>
+									<p id="annee">Première immatriculation: {{ usedCar.year}}</p>
+									<p id="km">Nombre de km: {{ usedCar.kilometer}}km</p>
+									<p id="energy">Moteur: {{ usedCar.energy}}</p>
+								</div>
+										<!-- Button trigger modal -->
+								<button type="button" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{ loop.index }}">
+									Détails
+								</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal{{ loop.index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
 											<div class="modal-header">
 												<h1 class="modal-title fs-5" id="exampleModalLabel{{ loop.index }}">{{ usedCar.name}}</h1>
 												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -127,35 +127,54 @@
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
 											</div>
-											</div>
 										</div>
 									</div>
+								</div>
 								<div>
-									<a id="contact-link" class="btn btn-secondary mbsy-3" href="{{ path('app_contact') }}" role="button"
-										data-name={{ usedCar.name }}
-										data-price={{ usedCar.price }}
-										data-year={{ usedCar.year }}
-										data-kilometer={{ usedCar.kilometer }}>
+									<a id="contact-link" class="btn btn-secondary mbsy-3" href="{{ path('app_contact') }}" role="button">
 										Contactez-nous
-									</a>
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at" viewbox="0 0 16 16">
 											<path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
 											<path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
 										</svg>
 									</a>
 								</div>
-							
+							</div>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
-	</div>
 	</section>
+	
+	<script>
+	
+	// Récupérer le bouton "Contactez-nous" par son identifiant
+let contactButton = document.getElementById('contact-link');
 
+// Ajouter un gestionnaire d'événements pour le clic sur le bouton
+contactButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
 
+    // Récupérer les données du véhicule
+    let vehicleName = document.getElementById('nameCar').textContent;
+    let vehiclePrice = document.getElementById('price').textContent;
+    let vehicleYear = document.getElementById('year').textContent;
 
-	<script src="{{ asset('assets/JS/contact.js') }} " defer></script>
+    // Utiliser les données récupérées pour les envoyer dans le formulaire de contact
+    // Vous pouvez utiliser une méthode appropriée ici pour envoyer les données au serveur, par exemple via une requête AJAX.
+
+    // Exemple d'affichage des données récupérées dans la console
+    console.log('Nom du véhicule:', vehicleName);
+    console.log('Prix du véhicule:', vehiclePrice);
+    console.log('Année du véhicule:', vehicleYear);
+
+    // Rediriger vers la page de contact (si nécessaire)
+    // window.location.href = contactLink; // Décommentez cette ligne si vous souhaitez rediriger l'utilisateur vers la page de contact après avoir récupéré les données.
+});
+	
+	</script>
+
 	<script src="{{ asset('assets/JS/filter.js') }} " defer></script>
 	{% include 'menu/footer.html.twig' %}
 {% endblock %}
