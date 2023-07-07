@@ -48,10 +48,6 @@ class UserCrudController extends AbstractCrudController
 
         yield ChoiceField::new('roles', 'Rôle à attribuer')
             ->allowMultipleChoices()
-            ->renderAsBadges([
-                'ROLE_ADMIN' => 'success',
-                'ROLE_AUTHOR' => 'warning'
-            ])
             ->setChoices([
                 'Administrateur' => 'ROLE_ADMIN',
                 'Utilisateur' => 'ROLE_USER'

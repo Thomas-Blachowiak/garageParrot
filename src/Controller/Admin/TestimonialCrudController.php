@@ -26,8 +26,10 @@ class TestimonialCrudController extends AbstractCrudController
     {
         yield    TextField::new('name', 'Nom');
         yield    TextareaField::new('content', 'Contenue');
-        yield    IntegerField::new('note', 'Note sur 20');
-        yield    BooleanField::new('approved', 'Approuvé')->renderAsSwitch();
+        yield    IntegerField::new('note', 'Note sur 5');
+        
+        yield    BooleanField::new('approved', 'Approuvé')
+                    ->renderAsSwitch();
     }
     public function configureCrud(Crud $crud): Crud
     {

@@ -34,3 +34,12 @@ h5 {
 .bold-link {
     font-weight: bold;
 }
+.stars {
+    color: gold;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        margin-top: 60px;
+    }
+}

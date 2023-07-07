@@ -22,7 +22,7 @@
 
     <div class="form-group my-3">
         Votre note sur 5:
-        {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.note, {'attr': {'class': 'form-control', 'id': 'note-input'}}) }}
         {{ form_errors(form.note) }}
     </div>
 
@@ -30,6 +30,5 @@
 
     {{ form_end(form) }}
 </div>
-
 {% include 'menu/footer.html.twig' %}
 {% endblock %}

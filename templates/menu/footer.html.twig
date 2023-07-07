@@ -1,31 +1,27 @@
 <footer>
-	<div class="container-sm">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-4 text-center my-3 bg-secondary">
-				<h5>Horaires</h5>
-        {% for openingDays in openingDays %}
-                <p><strong>{{ openingDays.days }}:</strong>  {{ openingDays.open }}</p>
-        {% endfor %}
-			</div>
-			<div class="col-md-4 text-center my-3 align-self-center">
-				<h5>Satisfait de nos services ?</h5>
-				<h5>Faites-part de vos impressions !
-				</h5><br>
-				<a class="btn btn-success mbsy-3" href="{{ path('app_testimonial')}}" role="button">Cliquez-ici</a>
-			</div>
-			<div class="col-md-4 text-center my-3 bg-secondary">
-				<h5>Adresse</h5>
-				<p>{{ address.street }}</p>
-				<p>{{ address.city }}</p>
-				<p>{{ address.zipCode }}</p>
-                <h5>Téléphone</5><br><br>
-                <p>
-					<a href="tel:{{ address.phoneNumber }}" class="text-black">
-						{{ address.phoneNumber }}
-					</a>
-				</p>
-			</div>
+		<div class="col-md-4 text-center my-3 bg-secondary">
+			<h5>Horaires</h5>
+			{% for openingDays in openingDays %}
+			<p><strong>{{ openingDays.days }}:</strong> {{ openingDays.open }}</p>
+			{% endfor %}
+		</div>
+		<div class="col-md-4 text-center my-3 align-self-center">
+			<h5>Satisfait de nos services ?</h5>
+			<h5>Faites part de vos impressions !</h5><br>
+			<a class="btn btn-success my-3" href="{{ path('app_testimonial')}}" role="button">Cliquez ici</a>
+		</div>
+		<div class="col-md-4 text-center my-3 bg-secondary">
+			<h5>Adresse</h5>
+			<p>{{ address.street }}</p>
+			<p>{{ address.city }}</p>
+			<p>{{ address.zipCode }}</p>
+			<h5>Téléphone</h5><br><br>
+			<p>
+			<a href="tel:{{ address.phoneNumber }}" class="text-black">{{ address.phoneNumber }}</a>
+			</p>
+		</div>
 		</div>
 	</div>
-    
 </footer>

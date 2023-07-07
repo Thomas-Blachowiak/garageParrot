@@ -21,32 +21,32 @@
 						<div class="offcanvas-body">
 								<div class="row">
 									<div class="form-group col-md-auto">
-										<label for="year-filter">Filtrer par année (min) :</label>
-										<input type="number" id="year-min-filter" class="form-control" placeholder="Min Year">
+										<label for="year-filter">Année (min) :</label>
+										<input type="number" id="year-min-filter" class="form-control" placeholder="Min. année">
 									</div>
 									<div class="form-group col-md-auto">
-										<label for="year-filter">Filtrer par année (max) :</label>
-										<input type="number" id="year-max-filter" class="form-control" placeholder="Max Year">
-									</div>
-								</div>
-								<div class="row">
-									<div class="form-group col-md-auto">
-										<label for="kilometer-filter">Filtrer par kilomètres (min) :</label>
-										<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min Kilomètres">
-									</div>
-									<div class="form-group col-md-auto">
-										<label for="kilometer-filter">Filtrer par kilomètres (max) :</label>
-										<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max Kilomètres">
+										<label for="year-filter">Année (max) :</label>
+										<input type="number" id="year-max-filter" class="form-control" placeholder="Max. année">
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group col-md-auto">
-										<label for="price-min-filter">Filtrer par prix (min) :</label>
-										<input type="number" id="price-min-filter" class="form-control" placeholder="Min Prix">
+										<label for="kilometer-filter">Kilomètres (min) :</label>
+										<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min. Kilomètres">
 									</div>
 									<div class="form-group col-md-auto">
-										<label for="price-min-filter">Filtrer par prix (max) :</label>
-										<input type="number" id="price-max-filter" class="form-control" placeholder="Max Prix">
+										<label for="kilometer-filter">Kilomètres (max) :</label>
+										<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max. Kilomètres">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-auto">
+										<label for="price-min-filter">Prix (min) :</label>
+										<input type="number" id="price-min-filter" class="form-control" placeholder="Min. Prix">
+									</div>
+									<div class="form-group col-md-auto">
+										<label for="price-min-filter">Prix (max) :</label>
+										<input type="number" id="price-max-filter" class="form-control" placeholder="Max. Prix">
 									</div>
 								</div>
 								</div>
@@ -62,14 +62,15 @@
 			</div>
 		</div>
 	</section>
+
 	<section>
-	<div class="container-sm ">
-		<div class="row justify-content-around justify-items-center">
+	<div class="container">
+		<div class="row justify-content-center">
 			{% for usedCar in usedCar %}
-				<div class="col-md-auto" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
+				<div class="col-auto col-md-auto" id="car" data-year={{ usedCar.year }} data-kilometer={{ usedCar.kilometer }} data-price={{ usedCar.price }}>
 					<div class="card m-1 bg-secondary" style="width: 20rem">
 						{% if usedCar.getImages()|length > 1 %}
-							<div id="carCarousel{{ loop.index }}" class="carousel slide">
+							<div id="carCarousel{{ loop.index }}" class="carousel">
 								<div class="carousel-inner">
 									{% for image in usedCar.getImages() %}
 										<div class="carousel-item {% if loop.first %}active{% endif %}">
@@ -94,13 +95,13 @@
 						<div class="card-body">
 							<h5 class="card-title">{{ usedCar.name}}</h5>
 							<div class="card-text">
-								<p id="price" class="my-1">Prix: {{ usedCar.price}}€</p>
-								<p id="annee" class="my-1">Première immatriculation: {{ usedCar.year}}</p>
-								<p id="km" class="my-1">Nombre de km: {{ usedCar.kilometer}}km</p>
-								<p id="energy" class="my-1">Moteur: {{ usedCar.energy}}</p>
+								<p id="price">Prix: {{ usedCar.price}}€</p>
+								<p id="annee">Première immatriculation: {{ usedCar.year}}</p>
+								<p id="km">Nombre de km: {{ usedCar.kilometer}}km</p>
+								<p id="energy">Moteur: {{ usedCar.energy}}</p>
 							</div>
 									<!-- Button trigger modal -->
-									<button type="button" class="btn btn-success col-4 my-1 mx-center" data-bs-toggle="modal" data-bs-target="#exampleModal{{ loop.index }}">
+									<button type="button" class="btn btn-success col-12 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{ loop.index }}">
 										Détails
 									</button>
 									<!-- Modal -->
@@ -151,30 +152,6 @@
 		</div>
 	</div>
 	</section>
-
-<script>
-  {% for usedCar in usedCar %}
-    {% verbatim %}
-    var car{{ loop.index }} = {
-      year: {{ usedCar.year }},
-      kilometer: {{ usedCar.kilometer }},
-      price: {{ usedCar.price }},
-      name: "{{ usedCar.name|raw }}",
-      energy: "{{ usedCar.energy|raw }}",
-      characteristics: "{{ usedCar.caracteristics|raw }}"
-    };
-    {% endverbatim %}
-  {% endfor %}
-
-console.log(car1.year);
-console.log(car1.kilometer);
-console.log(car1.price);
-</script>
-
-
-
-
-
 
 
 
