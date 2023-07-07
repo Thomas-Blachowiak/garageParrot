@@ -146,34 +146,6 @@
 			</div>
 		</div>
 	</section>
-	
-	<script>
-	
-	// Récupérer le bouton "Contactez-nous" par son identifiant
-let contactButton = document.getElementById('contact-link');
-
-// Ajouter un gestionnaire d'événements pour le clic sur le bouton
-contactButton.addEventListener('click', function(event) {
-    event.preventDefault(); // Empêcher le comportement par défaut du lien
-
-    // Récupérer les données du véhicule
-    let vehicleName = document.getElementById('nameCar').textContent;
-    let vehiclePrice = document.getElementById('price').textContent;
-    let vehicleYear = document.getElementById('year').textContent;
-
-    // Utiliser les données récupérées pour les envoyer dans le formulaire de contact
-    // Vous pouvez utiliser une méthode appropriée ici pour envoyer les données au serveur, par exemple via une requête AJAX.
-
-    // Exemple d'affichage des données récupérées dans la console
-    console.log('Nom du véhicule:', vehicleName);
-    console.log('Prix du véhicule:', vehiclePrice);
-    console.log('Année du véhicule:', vehicleYear);
-
-    // Rediriger vers la page de contact (si nécessaire)
-    // window.location.href = contactLink; // Décommentez cette ligne si vous souhaitez rediriger l'utilisateur vers la page de contact après avoir récupéré les données.
-});
-	
-	</script>
 
 	<script src="{{ asset('assets/JS/filter.js') }} " defer></script>
 	{% include 'menu/footer.html.twig' %}

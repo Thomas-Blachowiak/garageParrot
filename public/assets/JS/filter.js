@@ -1,4 +1,5 @@
 let filterForm = document.getElementById('filter-form');
+
 filterForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Empêcher le rechargement de la page par défaut lors de la soumission du formulaire
 
@@ -9,7 +10,7 @@ filterForm.addEventListener('submit', function (event) {
     let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
     let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
 
-    let usedCars = document.getElementsById('car');
+    let usedCars = document.getElementsByClassName('col-md-auto');
     for (let i = 0; i < usedCars.length; i++) {
         let usedCar = usedCars[i];
         let year = parseInt(usedCar.getAttribute('data-year'));

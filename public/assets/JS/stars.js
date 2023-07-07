@@ -12,7 +12,7 @@ noteElements.forEach(function (noteElement) {
     // Vérifier si la note est valide (entre 1 et 5)
     if (!isNaN(note) && note >= 1 && note <= 5) {
         // Créer une chaîne de caractères contenant les étoiles
-        let stars = ' ';
+        let stars = '  ';
         for (let i = 0; i < note; i++) {
             stars += '★';
         }
