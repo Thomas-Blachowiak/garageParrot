@@ -10,7 +10,7 @@ filterForm.addEventListener('submit', function (event) {
     let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
     let priceMaxFilter = parseInt(document.getElementById('price-max-filter').value);
 
-    let usedCars = document.getElementsByClassName('col-md-auto');
+    let usedCars = document.getElementsByClassName('cars-filter');
     for (let i = 0; i < usedCars.length; i++) {
         let usedCar = usedCars[i];
         let year = parseInt(usedCar.getAttribute('data-year'));

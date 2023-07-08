@@ -7,6 +7,7 @@ use App\Repository\ImageRepository;
 use App\Repository\OpeningDaysRepository;
 use App\Repository\UsedCarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,5 +25,4 @@ class UsedCarController extends AbstractController
         'openingDays' => $openingDaysRepository->findBy([],[])
         ]);
     }
-
 }

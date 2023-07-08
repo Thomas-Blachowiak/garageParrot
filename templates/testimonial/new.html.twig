@@ -1,34 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau témoignage{% endblock %}
+{% block title %}Nouveau témoignage
+{% endblock %}
 
 {% block body %}
-<div class="container-sm">
-    <h1 class="text-center my-4">Nouveau témoignage</h1>
-
-    {{ form_start(form) }}
-
-    <div class="form-group my-3">
-        Nom:
-        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.name) }}
-    </div>
-    
-    <div class="form-group my-3">
-        Votre témoignage:
-        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.content) }}
-    </div>
-
-    <div class="form-group my-3">
-        Votre note sur 5:
-        {{ form_widget(form.note, {'attr': {'class': 'form-control', 'id': 'note-input'}}) }}
-        {{ form_errors(form.note) }}
-    </div>
-
-    <button type="submit" class="btn btn-success my-3">Envoyer</button>
-
-    {{ form_end(form) }}
-</div>
-{% include 'menu/footer.html.twig' %}
+	<div class="container-sm">
+		<div class="row">
+			<div class="col-6 mx-auto">
+				<h1 class="text-center my-4">Nouveau témoignage</h1>
+				{{ form_start(form) }}
+				<div class="form-group my-3">
+					<p class="bold-title">Nom:</p>
+					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.name) }}
+				</div>
+				<div class="form-group my-3">
+					<p class="bold-title">Votre témoignage:</p>
+					{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.content) }}
+				</div>
+				<div class="form-group my-3">
+					<p class="bold-title">Votre note sur 5:</p>
+					{{ form_widget(form.note, {'attr': {'class': 'form-control', 'id': 'note-input'}}) }}
+					{{ form_errors(form.note) }}
+				</div>
+				<div class="d-flex justify-content-center">
+					<button type="submit" class="btn btn-success my-3">Envoyer</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+	{% include 'menu/footer.html.twig' %}
 {% endblock %}
+

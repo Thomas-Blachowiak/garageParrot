@@ -1,25 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Témoignage{% endblock %}
+{% block title %}Témoignage
+{% endblock %}
 
 {% block body %}
-<div class="container-sm my-5">
-    <div class="card text-center">
-        <div class="card-header">
-            <strong>Succès</strong>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Le formulaire a été envoyé avec succès</h5>
-            <p class="card-text">
-            Merci pour votre retour.<br>
-            Nous restons à votre écoute pour tout autre demande
-            </p>
-        </div>
-        <div class="card-footer text-body-secondary">
-            <a href="{{ path('app_home')}}" class="btn btn-primary my-2">Retour au menu principal</a>
-            
-        </div>
-    </div>
-</div>
-
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-6 mx-auto">
+				<div class="card text-center">
+					<div class="card-header">
+						<strong>Succès</strong>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Le formulaire a été envoyé</h5>
+						<p class="card-text">
+							Merci pour votre retour.<br>
+							Merci de votre confiance à bientôt chef V. PARROT
+						</p>
+					</div>
+					<div class="card-footer text-body-secondary">
+						<a href="{{ path('app_home')}}" class="btn btn-success my-2">Retour au menu principal</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

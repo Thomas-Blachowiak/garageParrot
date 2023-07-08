@@ -27,7 +27,7 @@ footer {
     height: 200px;
 }
 
-h5 {
+h4 {
     text-decoration: underline;
 }
 
@@ -42,4 +42,13 @@ h5 {
     .navbar-collapse {
         margin-top: 60px;
     }
+}
+
+/* Event */
+.card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.text-bigger {
+    transform: scale(1.10);
 }
