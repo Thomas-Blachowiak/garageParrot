@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-6 mx-auto">
 				<h1 class="text-center my-4">Nouveau témoignage</h1>
-				{{ form_start(form) }}
+				{{ form_start(form, {'attr': {'id': 'votre-formulaire'}}) }}
 				<div class="form-group my-3">
 					<p class="bold-title">Nom:</p>
 					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}

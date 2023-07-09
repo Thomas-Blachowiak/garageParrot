@@ -28,7 +28,6 @@ class ContactController extends AbstractController
     {
         $contact = new Contact();
 
-        //$form = $this->createForm(ContactType::class, $contact);
         $form = $this->createForm(ContactType::class, $contact, [
             'attr' => [
                 'data-year' => $request->query->get('year'),

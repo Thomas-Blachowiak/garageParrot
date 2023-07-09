@@ -44,3 +44,14 @@ for (var i = 0; i < paragraphs.length; i++) {
         this.classList.remove('text-bigger');
     });
 }
+
+// Agrandi le logo du nav-bar
+document.addEventListener('DOMContentLoaded', function() {
+    var image = document.querySelector('.navbar-brand img');
+    image.addEventListener('mouseover', function() {
+        this.style.transform = 'scale(1.1)';
+    });
+    image.addEventListener('mouseout', function() {
+        this.style.transform = 'scale(1)';
+    });
+});

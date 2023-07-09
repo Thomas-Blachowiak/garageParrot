@@ -52,3 +52,11 @@ h4 {
 .text-bigger {
     transform: scale(1.10);
 }
+
+.event-services {
+    transition: transform 0.2s ease-in-out;
+}
+
+.event-services:hover {
+    transform: translateX(-7px); /* Décalage de 5 pixels vers la droite */
+}
