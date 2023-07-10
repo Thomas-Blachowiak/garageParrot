@@ -7,6 +7,7 @@ use App\Repository\ContactRepository;
 use App\Repository\AddressRepository;
 use App\Repository\OpeningDaysRepository;
 use App\Form\ContactType;
+use App\Repository\UsedCarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,17 +25,14 @@ class ContactController extends AbstractController
         $this->contactRepository = $contactRepository;
     }
     #[Route('/contact', name: 'app_contact')]
-    public function new(Request $request,AddressRepository $addressRepository, OpeningDaysRepository $openingDaysRepository): Response
+    public function new(Request $request,AddressRepository $addressRepository, OpeningDaysRepository $openingDaysRepository, UsedCarRepository $usedCarRepository ): Response
     {
         $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
 
-        $form = $this->createForm(ContactType::class, $contact, [
-            'attr' => [
-                'data-year' => $request->query->get('year'),
-                'data-kilometer' => $request->query->get('kilometer'),
-                'data-price' => $request->query->get('price'),
-            ],
-        ]);
+    // Créer le formulaire de contact
+    $form = $this->createForm(ContactType::class, $contact);
+
         
         $form->handleRequest($request);
 
@@ -49,7 +47,8 @@ class ContactController extends AbstractController
             'controller_name' => 'ContactController',
             'form' => $form->createView(),
             'address' => $addressRepository->findOneBy([],[]),
-            'openingDays' => $openingDaysRepository->findBy([],[])
+            'openingDays' => $openingDaysRepository->findBy([],[]),
+            'usedCar' => $usedCarRepository->findBy([],[])
         ]);
     }
 

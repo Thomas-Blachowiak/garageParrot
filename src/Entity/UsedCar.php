@@ -40,7 +40,7 @@ class UsedCar
     #[ORM\Column(length: 100)]
     private ?string $energy = null;
 
-    #[ORM\OneToMany(mappedBy: 'usedCar', targetEntity: Image::class, orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'usedCar', targetEntity: Image::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $images;
 
     public function __construct()
@@ -135,7 +135,7 @@ class UsedCar
         return $this->images;
     }
 
-    public function addImage(Image $image): static
+    public function addImage(Image $image): self
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
@@ -144,8 +144,7 @@ class UsedCar
 
         return $this;
     }
-
-    public function removeImage(Image $image): static
+    public function removeImage(Image $image): self
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
@@ -155,5 +154,9 @@ class UsedCar
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

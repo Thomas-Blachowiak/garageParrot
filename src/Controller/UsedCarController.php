@@ -25,4 +25,5 @@ class UsedCarController extends AbstractController
         'openingDays' => $openingDaysRepository->findBy([],[])
         ]);
     }
+
 }
