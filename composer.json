@@ -87,7 +87,9 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrine:migrations:migrate"
+            "php bin/console doctrine:migrations:migrate",
+            "@php app/console assetic:dump --env=prod --no-debug",
+            "MyVendor\\MyClass::postDeployComposerCallback"
         ]
     },
     "conflict": {
