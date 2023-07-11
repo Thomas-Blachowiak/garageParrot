@@ -19,8 +19,6 @@ class UsedCar
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    // a mettre dans classe image -> imageFile, imageName vaut mieux copier coller
-    // créer image, -> relation -> usedCar manyToOne
     
     #[ORM\Column(length: 150)]
     private ?string $name = null;
