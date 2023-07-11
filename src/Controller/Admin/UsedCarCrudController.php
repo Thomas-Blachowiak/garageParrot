@@ -50,6 +50,7 @@ class UsedCarCrudController extends AbstractCrudController
         
         yield   CollectionField::new('images')
                 ->setEntryType(UsedCarImageType::class);
+                
         
     }
     public function configureCrud(Crud $crud): Crud
