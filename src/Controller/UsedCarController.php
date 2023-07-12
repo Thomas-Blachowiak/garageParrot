@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\AddressRepository;
-use App\Repository\ImageRepository;
 use App\Repository\OpeningDaysRepository;
 use App\Repository\UsedCarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
