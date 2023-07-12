@@ -6,7 +6,7 @@ vich_uploader:
         
     mappings:
         usedCar:
-            uri_prefix: public/images/usedCar
+            uri_prefix: /image
             upload_destination: '%kernel.project_dir%/public/images/usedCar'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
