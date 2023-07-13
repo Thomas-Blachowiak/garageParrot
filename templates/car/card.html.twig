@@ -74,7 +74,7 @@
 							</div>
 
 							<!-- Button trigger modal -->
-							<button type="button" onclick="preRemplir({{" namecar" ~ loop.index}})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<button type="button" onclick="preRemplir({{" nameCar" ~ loop.index}})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								Je suis intéressé
 							</button>
 							<!-- Modal -->
@@ -129,7 +129,7 @@
 
 <script>
 
-	function preRemplir(nameCar) {
+function preRemplir(nameCar) {
 
 const carName = document.getElementById(nameCar.id).textContent;
 const contentField = document.getElementById("contentField");
