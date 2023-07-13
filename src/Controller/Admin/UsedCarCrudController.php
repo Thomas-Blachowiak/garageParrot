@@ -54,7 +54,7 @@ class UsedCarCrudController extends AbstractCrudController
         return $crud
         ->setEntityLabelInSingular('un nouveau véhicule d\'occasion')
         ->setPageTitle('index', 'Voitures d\'occasion')
-        ->setPaginatorPageSize(5);
+        ->setPaginatorPageSize(15);
     }
 
 }

@@ -4,14 +4,14 @@
             <!-- Mise en place d'un boucle, pour créer individuellement chaque annonce -->
             {% for car in usedCar %}
                 <div class="col-auto col-md-auto cars-filter" id="car" data-year={{ car.year }} data-kilometer={{ car.kilometer }} data-price={{ car.price }}>
-                    <div class="card m-1 bg-secondary event-card" style="width: 320px; height: 580px;">
+                    <div class="card m-1 bg-secondary event-card" style="width: 320px; height: 550px;">
                         <!-- Ajout d'une condition pour mettre en place le carousel -->
                         {% if car.getImages()|length > 1 %}
                             <div id="carCarousel{{ loop.index }}" class="carousel">
                                 <div class="carousel-inner">
                                     {% for image in car.getImages() %}
                                         <div class="carousel-item {% if loop.first %} active{% endif %}">
-                                            <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto"  alt="Car Image">
+                                            <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto img-fluid" style="max-width: 320px; height: 250px;"  alt="Car Image">
                                         </div>
                                     {% endfor %}
                                 </div>
@@ -26,7 +26,7 @@
                             </div>
                         {% else %}
                             {% for image in car.getImages() %}
-                                <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto" alt="Car Image">
+                                <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto img-fluid" style="max-width: 320px; height: 250px;" alt="Car Image">
                             {% endfor %}
                         {% endif %}
                         <div class="card-body" id="card-body">
