@@ -11,7 +11,7 @@
                                 <div class="carousel-inner">
                                     {% for image in car.getImages() %}
                                         <div class="carousel-item {% if loop.first %} active{% endif %}">
-                                            <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_thumb')}}" class="d-block w-100 h-auto"  alt="Car Image">
+                                            <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto"  alt="Car Image">
                                         </div>
                                     {% endfor %}
                                 </div>
@@ -26,7 +26,7 @@
                             </div>
                         {% else %}
                             {% for image in car.getImages() %}
-                                <img src="{{ vich_uploader_asset(image, 'imageFile')| imagine_filter('my_thumb')}}" class="d-block w-100 h-auto" alt="Car Image">
+                                <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto" alt="Car Image">
                             {% endfor %}
                         {% endif %}
                         <div class="card-body" id="card-body">
