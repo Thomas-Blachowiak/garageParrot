@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,6 +34,14 @@ class Contact
     #[ORM\Column(type:"boolean")]
     
     private $approved = false;
+
+    #[ORM\OneToMany(mappedBy: 'contact', targetEntity: UsedCar::class)]
+    private Collection $carContact;
+
+    public function __construct()
+    {
+        $this->carContact = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +115,36 @@ class Contact
     public function setApproved(bool $approved): self
     {
         $this->approved = $approved;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UsedCar>
+     */
+    public function getCarContact(): Collection
+    {
+        return $this->carContact;
+    }
+
+    public function addCarContact(UsedCar $carContact): static
+    {
+        if (!$this->carContact->contains($carContact)) {
+            $this->carContact->add($carContact);
+            $carContact->setContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarContact(UsedCar $carContact): static
+    {
+        if ($this->carContact->removeElement($carContact)) {
+            // set the owning side to null (unless already changed)
+            if ($carContact->getContact() === $this) {
+                $carContact->setContact(null);
+            }
+        }
+
         return $this;
     }
 }
