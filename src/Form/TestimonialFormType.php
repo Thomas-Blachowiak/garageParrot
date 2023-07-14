@@ -14,8 +14,7 @@ class TestimonialFormType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('note')
-        ;
+            ->add('note');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

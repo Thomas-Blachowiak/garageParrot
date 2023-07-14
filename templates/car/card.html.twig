@@ -72,8 +72,8 @@
 									</div>
 								</div>
 							</div>
-							<!-- Button trigger modal -->
-							<button type="button" onclick="preRemplir({{"nameCar" ~ loop.index}})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<!-- Ajout d'une autre modal pour afficher le formulaire d'intéressement -->
+							<button type="button" onclick="preRemplir({{"nameCar" ~ loop.index}})" class="btn btn-success col-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								Je suis intéressé
 							</button>
 						</div>
@@ -88,7 +88,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+				<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
@@ -126,16 +126,19 @@
 				{{ form_end(form) }}
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- Ajout du JS pour pré remplir le formulaire -->
 <script>
+
 function preRemplir(nameCar) {
 
         const carName = document.getElementById(nameCar.id).textContent;
         const contentField = document.querySelector("#contact_content");
         contentField.value = 'Je vous contacte pour la ' + carName;
     }
+    
 </script>
