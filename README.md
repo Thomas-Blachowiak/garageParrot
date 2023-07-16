@@ -37,5 +37,5 @@ Ouvrir le fichier '.env' et ajoutez les valeurs des variables d'environnement su
 
         DATABASE_URL="mysql://nom_utilisateur:mot_de_passe@127.0.0.1:port/nom_du_projet?serverVersion=8&charset=utf8mb4"
 
-***Pour vous connecter en tant qu'admin sur le site, il vous faudra créer un utilisateur avec un 'ROLE_ADMIN' qui pourra gérer les actions.***
+***Pour vous connecter en tant qu'admin sur le site, il vous faudra créer un utilisateur avec un 'ROLE_ADMIN' qui pourra gérer les fonctionnalités.***
 
