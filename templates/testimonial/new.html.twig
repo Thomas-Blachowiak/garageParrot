@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="container-sm">
 		<div class="row">
-			<div class="col-6 mx-auto">
+			<div class="col-12 mx-auto">
 				<h1 class="text-center my-4">Nouveau témoignage</h1>
 				{{ form_start(form, {'attr': {'id': 'votre-formulaire'}}) }}
 				<div class="form-group my-3">
@@ -31,6 +31,5 @@
 			</div>
 		</div>
 	</div>
-	{% include 'menu/footer.html.twig' %}
 {% endblock %}
 

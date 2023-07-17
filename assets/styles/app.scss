@@ -27,10 +27,6 @@ footer {
     height: 200px;
 }
 
-h4 {
-    text-decoration: underline;
-}
-
 .bold-link {
     font-weight: bold;
 }
@@ -58,5 +54,5 @@ h4 {
 }
 
 .event-services:hover {
-    transform: translateX(-7px); /* Décalage de 5 pixels vers la droite */
+    transform: translateX(-7px);
 }
