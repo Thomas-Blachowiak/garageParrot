@@ -40,6 +40,20 @@ footer {
     }
 }
 
+@media (max-width: 767.98px) {
+    #nav .navbar-brand img {
+        width: 110px;
+    }
+    #nav .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+    #nav .navbar-brand,
+    #nav .navbar-toggler {
+        display: inline-block;
+    }
+}
+
 /* Event */
 .card {
     transition: box-shadow 0.3s ease-in-out;
