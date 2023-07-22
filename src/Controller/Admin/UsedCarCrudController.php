@@ -48,7 +48,7 @@ class UsedCarCrudController extends AbstractCrudController
         yield   CollectionField::new('images')
                 ->setEntryType(UsedCarImageType::class);
         
-        yield    ImageField::new('images')
+        yield    ImageField::new('photo')
                 ->setBasePath('uploads/images')
                 ->setUploadDir('public/uploads/images')
                 ->setSortable(false);

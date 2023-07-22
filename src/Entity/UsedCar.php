@@ -42,6 +42,9 @@ class UsedCar
     #[ORM\ManyToOne(inversedBy: 'carContact')]
     private ?Contact $contact = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -167,6 +170,18 @@ class UsedCar
     public function setContact(?Contact $contact): static
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): static
+    {
+        $this->photo = $photo;
 
         return $this;
     }
