@@ -8,29 +8,7 @@
 					<div
 						class="card m-1 bg-secondary event-card" style="width: 320px; height: 550px;">
 						<!-- Ajout d'une condition pour mettre en place le carousel -->
-						{% if car.getImages()|length > 1 %}
-							<div id="carCarousel{{ loop.index }}" class="carousel">
-								<div class="carousel-inner">
-									{% for image in car.getImages() %}
-										<div class="carousel-item {% if loop.first %} active{% endif %}">
-											<img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto img-fluid" style="max-width: 320px; height: 250px;" alt="Car Image">
-										</div>
-									{% endfor %}
-								</div>
-								<a class="carousel-control-prev" href="#carCarousel{{ loop.index }}" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only"></span>
-								</a>
-								<a class="carousel-control-next" href="#carCarousel{{ loop.index }}" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only"></span>
-								</a>
-							</div>
-						{% else %}
-							{% for image in car.getImages() %}
-								<img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="d-block w-100 h-auto img-fluid" style="max-width: 320px; height: 250px;" alt="Car Image">
-							{% endfor %}
-						{% endif %}
+						<img src="{{ asset('uploads/images/' ~ car.photo)}}" class="d-block w-100 h-auto img-fluid" style="max-width: 320px; height: 250px;" alt="Car Image">
 						<div class="card-body" id="card-body">
 							<h5 class="card-title" id="nameCar{{loop.index}}">{{ car.name}}</h5>
 							<div class="card-text">
