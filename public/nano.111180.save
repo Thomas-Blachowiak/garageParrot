@@ -60,8 +60,4 @@ DirectoryIndex index.php
 
 <IfModule !mod_rewrite.c>
     <IfModule mod_alias.c>
-        # When mod_rewrite is not available, we instruct a temporary redirect 
-        # to the front controller explicitly so that the website
-        RedirectMatch 307 ^/$ /index.php/
-    </IfModule>
-</IfModule>
+        # When mod_rewrite is no
