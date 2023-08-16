@@ -1,0 +1,72 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+nav {
+    background-color: $success;
+    height: 100px;
+}
+
+img {
+    width: 150px;
+    height: 80px;
+}
+
+footer {
+    background-color: $success;
+    bottom: 0;
+    width:100%;
+}
+
+#mecanics {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.bold-link {
+    font-weight: bold;
+}
+.stars {
+    color: gold;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #nav .navbar-brand img {
+        width: 100px;
+    }
+    #nav .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+    #nav .navbar-brand,
+    #nav .navbar-toggler {
+        display: inline-block;
+    }
+}
+
+/* Event */
+.card {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.text-bigger {
+    transform: scale(1.10);
+}
+
+.event-services {
+    transition: transform 0.2s ease-in-out;
+}
+
+.event-services:hover {
+    transform: translateX(-7px);
+}
