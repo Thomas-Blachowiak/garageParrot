@@ -11,6 +11,10 @@
         <link href="/public/assets/styles/app.scss" rel="stylesheet">
         <link href="/public/assets/styles/custom.scss" rel="stylesheet">
     
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+
         <script src="{{ asset('assets/JS/event.js') }} " defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
         <script src="{{ asset('assets/JS/app.js')}}" defer></script>
