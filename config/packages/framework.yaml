@@ -1,7 +1,6 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     assets:
-        base_path: '/garageParrot'
         json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
