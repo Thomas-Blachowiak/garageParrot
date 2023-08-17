@@ -11,7 +11,7 @@
 // You can specify which plugins you need
 
 // start the Stimulus application
-//import 'bootstrap';
+import 'bootstrap';
 
 
 

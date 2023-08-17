@@ -7,11 +7,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+	
         
         {% block stylesheets %}
 		{{ encore_entry_link_tags('app') }}
         {% endblock %}
+	
     </head>
 
     <body>
@@ -20,10 +21,13 @@
         </nav>
 
         {% block body %}{% endblock %}
+
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	{% block javascripts %}
 	    {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('event') }}
+	    {{ encore_entry_script_tags('filter') }}
 	{% endblock %}
 
     </body>
