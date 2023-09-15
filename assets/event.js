@@ -1,8 +1,8 @@
 // Evénement qui rajoute une ombre supplémentaire au passage de la souris
-var testimonialCards = document.getElementsByClassName('event-card');
+let testimonialCards = document.getElementsByClassName('event-card');
 
-for (var i = 0; i < testimonialCards.length; i++) {
-    var card = testimonialCards[i];
+for (let i = 0; i < testimonialCards.length; i++) {
+    let card = testimonialCards[i];
 
     card.addEventListener('mouseenter', function() {
         this.style.boxShadow = '0 0 15px rgba(0, 0, 0, 1)';
@@ -31,10 +31,10 @@ for (let i = 0; i < inputTitles.length; i++) {
 
 
 // Evénement qui aggrandi le texte qui est pointé par la souris
-var paragraphs = document.getElementsByClassName('text-hover');
+let paragraphs = document.getElementsByClassName('text-hover');
 
-for (var i = 0; i < paragraphs.length; i++) {
-    var paragraph = paragraphs[i];
+for (let i = 0; i < paragraphs.length; i++) {
+    let paragraph = paragraphs[i];
 
     paragraph.addEventListener('mouseenter', function() {
         this.classList.add('text-bigger');
@@ -47,7 +47,7 @@ for (var i = 0; i < paragraphs.length; i++) {
 
 // Agrandi le logo du nav-bar
 document.addEventListener('DOMContentLoaded', function() {
-    var image = document.querySelector('.navbar-brand img');
+    let image = document.querySelector('.navbar-brand img');
     image.addEventListener('mouseover', function() {
         this.style.transform = 'scale(1.1)';
     });
