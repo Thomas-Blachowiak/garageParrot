@@ -1,0 +1,164 @@
+<div class="container-sm text-center">
+	<h1 class="text-center my-4">Nos véhicules d'occasion</h1>
+	<section>
+		<div class="container my-2">
+			<div
+				class="row justify-content-center">
+				<!-- Kilométrage maximum -->
+				<div class="col-md-3 mb-4">
+					<div class="text-center">
+						<label for="kilometer-max" class="form-label">Kilométrage :</label>
+					</div>
+					<input type="range" class="form-range" name="kilometer-max" id="kilometer-max" min="0" max="160000" step="5000" value="180000">
+					<div class="text-center" style="font-size:1.4rem;">
+						<span id="kilometer-max-value" class="badge bg-success">180000 km</span>
+					</div>
+				</div>
+				<!-- Prix maximum -->
+				<div class="col-md-3 mb-4">
+					<div class="text-center">
+						<label for="price-max-input" class="form-label">Prix :</label>
+					</div>
+					<input type="range" class="form-range" name="price-max-input" id="price-max-input" min="0" max="100000" step="500" value="100000">
+					<div class="text-center" style="font-size:1.4rem;">
+						<span id="price-max-value" class="badge bg-success">100000 €</span>
+					</div>
+				</div>
+				<!-- Année maximum -->
+				<div class="col-md-3 mb-4">
+					<div class="text-center">
+						<label for="year-max-input" class="form-label">Année :</label>
+					</div>
+					<input type="range" class="form-range" name="year-max-input" id="year-max-input" min="2000" max="2023" value="2023">
+					<div class="text-center" style="font-size:1.4rem;">
+						<span id="year-max-value" class="badge bg-success">2023</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div
+		class="row justify-content-around justify-items-center">
+		<!-- Création du filtre des véhicules -->
+		<form id="filter-form">
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasRightLabel">Selectionnez vos paramètres</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<div class="row">
+						<div class="form-group col-md-auto cars-filter">
+							<label for="year-filter">Année (min) :</label>
+							<input type="number" id="year-min-filter" class="form-control" placeholder="Min. année">
+						</div>
+						<div class="form-group col-md-auto cars-filter">
+							<label for="year-filter">Année (max) :</label>
+							<input type="number" id="year-max-filter" class="form-control" placeholder="Max. année">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-auto cars-filter">
+							<label for="kilometer-filter">Kilomètres (min) :</label>
+							<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min. Kilomètres">
+						</div>
+						<div class="form-group col-md-auto cars-filter">
+							<label for="kilometer-filter">Kilomètres (max) :</label>
+							<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max. Kilomètres">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-auto cars-filter">
+							<label for="price-min-filter">Prix (min) :</label>
+							<input type="number" id="price-min-filter" class="form-control" placeholder="Min. Prix">
+						</div>
+						<div class="form-group col-md-auto cars-filter">
+							<label for="price-min-filter">Prix (max) :</label>
+							<input type="number" id="price-max-filter" class="form-control" placeholder="Max. Prix">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<button type="submit" class="btn btn-success col-4 my-2 mx-auto" data-bs-dismiss="offcanvas">Filtrer</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<button id="reset-button" class="btn btn-success col-4 my-2 mx-auto">Réinitialiser</button>
+		</div>
+	</form>
+</div>
+</div>
+<script>
+	// Récupération des éléments du DOM une seule fois
+	let filterForm = document.getElementById('filter-form');
+	let resetButton = document.getElementById('reset-button');
+	let kilometerMaxInput = document.getElementById('kilometer-max');
+	let kilometerMaxValue = document.getElementById('kilometer-max-value');
+	let priceMaxInput = document.getElementById('price-max-input');
+	let priceMaxValue = document.getElementById('price-max-value');
+	let yearMaxInput = document.getElementById('year-max-input');
+	let yearMaxValue = document.getElementById('year-max-value');
+
+	// Mise à jour du texte indiquant la valeur du kilométrage maximum
+	kilometerMaxInput.addEventListener('input', function () {
+		kilometerMaxValue.innerText = kilometerMaxInput.value + " km";
+	});
+	// Mise à jour du texte indiquant la valeur du prix maximum
+	priceMaxInput.addEventListener('input', function () {
+		priceMaxValue.innerText = priceMaxInput.value + " €";
+	});
+	yearMaxInput.addEventListener('input', function () {
+		yearMaxValue.innerText = yearMaxInput.value;
+	});
+
+	function filterCars() { // Récupération des valeurs des inputs
+	let yearMinFilter = parseInt(document.getElementById('year-min-filter').value);
+	let yearMaxFilter = parseInt(document.getElementById('year-max-filter').value);
+	let kilometerMinFilter = parseInt(document.getElementById('kilometer-min-filter').value);
+	let kilometerMaxFilterInput = parseInt(kilometerMaxInput.value);
+	let priceMinFilter = parseInt(document.getElementById('price-min-filter').value);
+	let priceMaxFilterInput = parseInt(priceMaxInput.value);
+	let yearMaxFilterInput = parseInt(document.getElementById('year-max-input').value);
+
+
+	let usedCars = document.getElementsByClassName('cars-filter');
+	for (let i = 0; i < usedCars.length; i++) {
+		let usedCar = usedCars[i];
+		let year = parseInt(usedCar.getAttribute('data-year'));
+		let kilometer = parseInt(usedCar.getAttribute('data-kilometer'));
+		let price = parseInt(usedCar.getAttribute('data-price'));
+		// Filtrage des voitures en fonction des critères
+		if (year < yearMinFilter || year > yearMaxFilterInput || kilometer < kilometerMinFilter || kilometer > kilometerMaxFilterInput || price < priceMinFilter || price > priceMaxFilterInput) {
+			usedCar.style.display = 'none';
+		} else {
+			usedCar.style.display = 'block';
+		}
+	}
+	}
+
+	// Gestionnaire d'événements pour le bouton de réinitialisation
+	resetButton.addEventListener('click', function () {
+		document.getElementById('year-min-filter').value = '';
+		document.getElementById('year-max-filter').value = '';
+		document.getElementById('kilometer-min-filter').value = '';
+		kilometerMaxInput.value = '160000';
+		kilometerMaxValue.innerText = '160000 km';
+		document.getElementById('price-min-filter').value = '';
+		document.getElementById('price-max-filter').value = '';
+		priceMaxInput.value = '100000';
+		priceMaxValue.innerText = '100000 €';
+		document.getElementById('year-max-input').value = '2023';
+		yearMaxValue.innerText = '2023';
+	});
+
+	// Gestionnaires d'événements pour les inputs
+	kilometerMaxInput.addEventListener('input', filterCars);
+	priceMaxInput.addEventListener('input', filterCars);
+	yearMaxInput.addEventListener('input', filterCars);
+	filterForm.addEventListener('submit', function (event) {
+		event.preventDefault();
+		filterCars();
+	});
+</script>
+

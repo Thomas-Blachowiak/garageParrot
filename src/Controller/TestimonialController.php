@@ -87,4 +87,35 @@ class TestimonialController extends AbstractController
 
         return $this->redirectToRoute('admin_testimonials');
     }
+    
+    #[Route('/testimonials/filter', name: 'filter_testimonials')]
+    public function filterTestimonials(Request $request): Response
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return $this->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+        }
+    
+        $testimonials = $this->testimonialRepository->findByNoteGreaterThan(3);
+    
+        return $this->render('home/testimonials_filtered.html.twig', [
+            'testimonials' => $testimonials,
+        ]);
+    }
+
+    #[Route('/testimonials/filter/low', name: 'filter_testimonials_low')]
+        public function filterTestimonialsLow(Request $request): Response
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return $this->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+        }
+
+        $testimonials = $this->testimonialRepository->findByNoteLessThan(3);
+
+        return $this->render('home/testimonials_filtered.html.twig', [
+            'testimonials' => $testimonials,
+        ]);
+    }
+
+
+
 }

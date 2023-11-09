@@ -1,0 +1,8 @@
+easy_admin:
+    design:
+        brand_color: '#your_brand_color'
+    entities:
+        Your\Entity\ClassName:
+            class: Your\Entity\ClassName
+            controller: EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController
+

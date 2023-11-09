@@ -15,14 +15,8 @@
         {% endif %}
         <div class="container-sm">
             <h1 class=" m-4 font-weight-normal text-center">
-                Zone administrateur<br>
-                Veuillez renseigner les champs
+                Espace administration
             </h1>
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <img src="{{ asset('/image/logo.jpeg')}}" class="rounded float-start">
-                </div>
-            </div>
             <div class="row">
                 <div class="col-6 mx-auto">
                     <label for="inputEmail" class="m-2 bold-title">Email:</label>
@@ -40,4 +34,88 @@
             </div>
         </div>
     </form>
+<div class="row justify-content-center justify-items-center">
+        <div id="weather-container">
+            <h2>Météo à <span id="weather-city"></span></h2>
+            <p>Température : <span id="weather-temp"></span>°C</p>
+            <p>Description : <span id="weather-description"></span></p>
+        </div>
+    </div>
+
+
+
+<script>
+const apiKey = 'a9b0211901f5d144fe22efed99443192'; // Remplacez par votre clé API
+const city = 'Toulouse'; // Par défaut, nous utilisons Paris, mais vous pouvez permettre à l'utilisateur de choisir
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fr`)
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Erreur réseau lors de la requête fetch.');
+    }
+    return response.json();
+})
+.then(data => {
+    document.getElementById('weather-city').innerText = city;
+    document.getElementById('weather-temp').innerText = data.main.temp;
+    document.getElementById('weather-description').innerText = data.weather[0].description;
+})
+.catch(error => {
+    console.error("Erreur lors de la récupération de la météo:", error);
+});
+
+// -----------------------------------
+
+
+</script>
+
+<style>
+#weather-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#weather-container h2 {
+    text-align: center;
+}
+
+/* ---------------------- */
+
+#typefit-quote-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#typefit-quote-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#new-typefit-quote {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #D9777F;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#new-typefit-quote:hover {
+    background-color: #D9677F;
+}
+
+
+
+</style>
+
 {% endblock %}
+

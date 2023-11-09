@@ -7,3 +7,7 @@ controllers:
 favicon:
     path: /favicon.ico
     controller: App\Controller\FaviconController::serveFavicon
+
+filter_testimonials:
+    path: /testimonials/filter
+    controller: App\Controller\TestimonialController::filterTestimonials

@@ -1,0 +1,17 @@
+{% for testimonial in testimonials %}
+{% if testimonial.approved %}
+    <div class="col text-center"> 
+        <div class="card m-4 bg-secondary event-card">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ testimonial.name }}</h5>
+                <p class="card-text">{{ testimonial.content }}</p>
+                <p class="note-{{ testimonial.id }}">La note laissée est de: {{ testimonial.note }}/5<br> </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    <div class="col text-center"> 
+        <p>Aucun témoignage avec une note supérieure à 3 n'a été trouvé.</p>
+    </div>
+{% endfor %}

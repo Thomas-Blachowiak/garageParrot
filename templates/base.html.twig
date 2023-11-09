@@ -4,10 +4,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %} - Garage V. PARROT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <meta name="description" content="V. Parrot - Garage automobile de qualité à Toulouse. Spécialiste en réparation, entretien et vente de véhicules. Votre satisfaction est notre priorité.">
+
+	 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500&display=swap" rel="stylesheet">
-	
+       
+  	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />	
         
         {% block stylesheets %}
 		{{ encore_entry_link_tags('app') }}
@@ -22,13 +25,18 @@
 
         {% block body %}{% endblock %}
 
-	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>       
+
 	{% block javascripts %}
 	    {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('event') }}
-	    {{ encore_entry_script_tags('filter') }}
+	  
+	    {{ encore_entry_script_tags('stars') }}
 	{% endblock %}
-
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
     </body>
 </html>

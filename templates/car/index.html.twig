@@ -4,65 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<div class="container-sm text-center">
-			<h1 class="text-center my-4">Nos véhicules d'occasion</h1>
-			<div
-				class="row justify-content-around justify-items-center">
-				<!-- Création du filtre des véhicules -->
-				<form id="filter-form">
-					<button class="btn btn-success col-4 my-2 mx-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-						Filtrer les véhicules
-					</button>
-					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-						<div class="offcanvas-header">
-							<h5 class="offcanvas-title" id="offcanvasRightLabel">Selectionnez vos paramètres</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-						</div>
-						<div class="offcanvas-body">
-							<div class="row">
-								<div class="form-group col-md-auto cars-filter">
-									<label for="year-filter">Année (min) :</label>
-									<input type="number" id="year-min-filter" class="form-control" placeholder="Min. année">
-								</div>
-								<div class="form-group col-md-auto cars-filter">
-									<label for="year-filter">Année (max) :</label>
-									<input type="number" id="year-max-filter" class="form-control" placeholder="Max. année">
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-auto cars-filter">
-									<label for="kilometer-filter">Kilomètres (min) :</label>
-									<input type="number" id="kilometer-min-filter" class="form-control" placeholder="Min. Kilomètres">
-								</div>
-								<div class="form-group col-md-auto cars-filter">
-									<label for="kilometer-filter">Kilomètres (max) :</label>
-									<input type="number" id="kilometer-max-filter" class="form-control" placeholder="Max. Kilomètres">
-								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-auto cars-filter">
-									<label for="price-min-filter">Prix (min) :</label>
-									<input type="number" id="price-min-filter" class="form-control" placeholder="Min. Prix">
-								</div>
-								<div class="form-group col-md-auto cars-filter">
-									<label for="price-min-filter">Prix (max) :</label>
-									<input type="number" id="price-max-filter" class="form-control" placeholder="Max. Prix">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<button type="submit" class="btn btn-success col-4 my-2 mx-auto" data-bs-dismiss="offcanvas">Filtrer</button>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<button id="reset-button" class="btn btn-success col-4 my-2 mx-auto">Réinitialiser</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</section>
+{% include "car/filtre.html.twig" %}
 {% include "car/card.html.twig" %}
-<script src="{{ asset('assets/JS/filter.js') }} " defer></script>
-{% include 'menu/footer.html.twig' %}{% endblock %}
+{% include 'menu/footer.html.twig' %}
+{% endblock %}
+

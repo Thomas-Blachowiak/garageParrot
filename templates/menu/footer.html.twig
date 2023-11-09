@@ -1,7 +1,7 @@
 <footer>
 	<div class="container mt-3">
 		<div class="row">
-			<div class="col-md-4 text-center my-3 bg-secondary">
+			<div class="col-md-4 text-center my-3 bg-secondary" data-aos="zoom-in-right" >
 				<h5>Horaires</h5>
 				{% for openingDays in openingDays %}
 				<p class="text-hover"><strong>{{ openingDays.days }}:</strong> {{ openingDays.open }}</p>
@@ -12,7 +12,7 @@
 				<h5>Faites part de vos impressions !</h5><br>
 				<a class="btn btn-secondary my-3" href="{{ path('app_testimonial')}}" role="button">Cliquez ici</a>
 			</div>
-			<div class="col-md-4 text-center my-3 bg-secondary py-4">
+			<div class="col-md-4 text-center my-3 bg-secondary py-4" data-aos="zoom-in-left" >
 				<div class="d-flex flex-column align-items-center justify-content-center">
 					<h5>Adresse</h5>
 					<p class="m-0 text-hover">{{ address.street }}</p>
@@ -26,4 +26,66 @@
 			</div>
 		</div>
 	</div>
+<div class="py-2 contact">
+	<p class="text-center">
+		&copy; 2023 Garage Parrot. Tous droits réservés.
+	</p>
+</div>
+<!-- Button trigger modal -->
+<div class="text-center pb-3">
+	<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+		Mentions légales
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog" "modal-dialog-scrollable" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">Mentions légales</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<b>Mentions légales du site garage Parrot</b><br>
+					<b>Identification de l'éditeur:</b><br>
+					<b>Nom:</b>
+					Société Exemple<br>
+					<b>Adresse:</b>
+					123 rue Lorem, 45678 Ipsumville<br>
+					<b>Téléphone:</b>
+					01 23 45 67 89<br>
+					<b>E-mail:</b>
+					contact@exemple-site.com<br>
+					<b>Immatriculation:</b>
+					RCS Ipsumville 123 456 789<br>
+					<b>Capital social</b>: 10 000€<br>
+					<b>Responsable de la publication:</b><br>
+					Mme/M. John/Jane Doe<br>
+					<b>Identification de l'hébergeur:</b><br>
+					<b>Société:</b>
+					Hébergeur Exemple<br>
+					<b>Adresse:</b>
+					12 rue Dolor, 12345 Sitville<br>
+					<b>Téléphone:</b>
+					01 98 76 54 32<br>
+					<b>E-mail:</b>
+					support@hebergeur-exemple.com<br>
+					<b>Conditions générales d'utilisation:</b><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Mauris euismod pellentesque tellus sit amet mollis.<br>
+					<b>Propriété intellectuelle:</b><br>
+					Tous les contenus de ce site (textes, images, vidéos, etc.) sont protégés par des droits d'auteur. Nulla facilisi. Nullam in magna id dolor blandit rutrum eget vulputate augue.<br>
+					<b>Protection des données personnelles:</b><br>
+					Nous respectons votre vie privée. Nullam vehicula, nisl sed cursus convallis, sapien urna accumsan quam, sed efficitur orci sem eget neque. Donec in hendrerit lorem.<br>
+					<b>Liens vers d'autres sites:</b><br>
+					Certains liens sur ce site renvoient vers d'autres sites. Nous ne sommes pas responsables du contenu de ces sites externes. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.<br>
+					<b>Loi applicable et juridiction:</b><br>
+					Tout litige en relation avec l'utilisation de www.exemple-site.com est soumis au droit de Loremville. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </footer>

@@ -38,4 +38,22 @@ class TestimonialRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+        public function findByNoteGreaterThan($note)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.note > :note')
+            ->setParameter('note', $note)
+            ->getQuery()
+            ->getResult();
+    }
+
+        public function findByNoteLessThan($note)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.note < :note')
+            ->setParameter('note', $note)
+            ->getQuery()
+            ->getResult();
+    }
 }
