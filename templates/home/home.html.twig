@@ -38,13 +38,13 @@
 						<div data-aos="fade-up" data-aos-duration="2000">
 						<div class="card m-3 bg-secondary event-services event-card">
 							<div class="d-flex justify-content-center">
-								<img src="{{ asset('uploads/images/' ~ services.images)}}" class="img-fluid" alt="mecanics-image" id="mecanics" style="height: 100%; widht:100%;">
+								<img src="{{ asset('uploads/images/' ~ services.images)}}" class="img-fluid p-2" alt="mecanics-image" id="mecanics" style="height: 100%; widht:100%;">
 							</div>
 							<div class="card-body">
-								<h4 class="card-title">
+								<h4 class="card-title text-center">
 									<strong>{{ services.name }}</strong>
 								</h4>
-								<p class="card-text" style="text-align: justify;">
+								<p class="card-text" style="text-align: center;">
 									{{ services.content }}
 								</p>
 							</div>
@@ -86,7 +86,7 @@
 						</button>
 					</div>
 					<div class="col text-center ">
-						<a class="btn btn-success my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
+						<a class="btn btn-secondary my-2 mx-auto" href="{{ path('app_testimonial')}}" role="button">
 							Je laisse un témoignage
 						</a>
 					</div>
